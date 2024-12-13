@@ -1,0 +1,26 @@
+services:
+  back:
+    
+  front:
+
+  db:
+    image: postgres:15
+    container_name: meuslares-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      TZ: America/Sao_Paulo
+    ports:
+      - "${DB_PORT}:5432"
+    networks:
+      - meuslares-network
+    
+networks:
+  meuslares-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
