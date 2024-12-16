@@ -2,7 +2,11 @@ namespace Back.Domain.Entities;
 
 public class Distance
 {
-    public required Local De { get; set; }
-    public required Local Para { get; set; }
-    public float Distancia { get; }
+    public int Id { get; set; }
+    public required string De { get; set; }
+    public required string Para { get; set; }
+    public required float Distancia { get; set; }
+    public required User User { get; set; }
+
+    public required int UserId { get; set; }
 }

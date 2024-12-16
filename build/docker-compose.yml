@@ -1,11 +1,8 @@
 services:
-  back:
-    
-  front:
-
   db:
     image: postgres:15
-    container_name: meuslares-db
+    container_name: distancia-ceps-db
+    env_file: ./.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
@@ -16,10 +13,10 @@ services:
     ports:
       - "${DB_PORT}:5432"
     networks:
-      - meuslares-network
+      - distancia-ceps-network
     
 networks:
-  meuslares-network:
+  distancia-ceps-network:
     driver: bridge
 
 volumes:
