@@ -55,7 +55,7 @@ public class TokenDependence
 
         ClaimsPrincipal principal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
 
-        if (!(validatedToken is JwtSecurityToken jwtToken && 
+        if (!(validatedToken is JwtSecurityToken jwtToken &&
             jwtToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase)))
         {
             throw new UnauthorizedAccessException("Não autenticado.");

@@ -17,12 +17,13 @@ public class UserRepository
         await _dbContext.Users.AddAsync(user);
         await _dbContext.SaveChangesAsync();
 
-        return user; 
+        return user;
     }
 
     public async Task<User?> GetByEmailAsync(string? email)
     {
-        if(email == null){
+        if (email == null)
+        {
             throw new KeyNotFoundException("Email não informado");
         }
         return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);

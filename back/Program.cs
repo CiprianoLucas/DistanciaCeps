@@ -1,9 +1,13 @@
 ﻿using Back.Infra.Database;
+using Back.App;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
+builder.Services.Configure<AppDbContext>(builder.Configuration.GetSection("AppDbContext"));
+
 DotNetEnv.Env.Load(".env");
-string connectionString = 
+string connectionString =
     $"Host={Environment.GetEnvironmentVariable("DB_HOST")};" +
     $"Database={Environment.GetEnvironmentVariable("DB_NAME")};" +
     $"Username={Environment.GetEnvironmentVariable("DB_USER")};" +

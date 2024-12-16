@@ -3,7 +3,7 @@ using Back.Domain.Services;
 using Back.Domain.Entities;
 using Back.App.DTOs;
 
-namespace SolutionName.API.Controllers;
+namespace Back.App.HTTP;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -21,7 +21,8 @@ public class UserController : ControllerBase
     [HttpPost("user")]
     public async Task<IActionResult> RegisterAsync([FromBody] UserRegisterDto dto)
     {
-        try{
+        try
+        {
             User User = await _userService.CreateUserAsync(dto.Username, dto.Password, dto.Email);
             UserRegisterResponseDto Response = UserRegisterResponseDto.Create(User);
             return Created("", Response);

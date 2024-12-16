@@ -2,14 +2,15 @@ using Back.Domain.Entities;
 using Back.Infra.Database;
 using Back.Infra.Dependence;
 
-namespace Back.Domain.Services{
+namespace Back.Domain.Services;
 
 public class TokenService
 {
     private readonly UserRepository _userRepository;
     private readonly TokenDependence _tokenDependence;
 
-    public TokenService(UserRepository userRepository, TokenDependence tokenDependence){
+    public TokenService(UserRepository userRepository, TokenDependence tokenDependence)
+    {
         _userRepository = userRepository;
         _tokenDependence = tokenDependence;
     }
@@ -23,10 +24,10 @@ public class TokenService
     {
         string? email = _tokenDependence.VerifyToken(token);
         User? user = await _userRepository.GetByEmailAsync(email);
-        if(user == null){
+        if (user == null)
+        {
             throw new UnauthorizedAccessException("Token inválido");
         }
         return user;
     }
-}
 }

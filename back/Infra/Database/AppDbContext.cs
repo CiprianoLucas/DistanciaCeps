@@ -6,10 +6,30 @@ namespace Back.Infra.Database;
 public class AppDbContext : DbContext
 {
 
-    public required DbSet<User> Users { get; set; }
-    public required DbSet<Distance> Distances { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Distance> Distances { get; set; }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    public static DbContextOptions<AppDbContext> CreateOptions(
+        string DbHost,
+        string DbName,
+        string DbUser,
+        string DbPassword,
+        string DbPort = "5432"
+    ){
+        string connectionString =
+            $"Host={DbHost};" +
+            $"Database={DbName};" +
+            $"Username={DbUser};" +
+            $"Password={DbPassword}";
+
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseNpgsql("")
+            .Options;
+
+        return options;
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

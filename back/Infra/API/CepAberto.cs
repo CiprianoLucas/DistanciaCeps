@@ -4,11 +4,12 @@ public class CepAbertoApi
 {
 
     private const string Url = "https://www.cepaberto.com/api/v3/";
-    private string Token { get; set;}
+    private string Token { get; set; }
 
     private HttpClient client = new HttpClient();
 
-    public CepAbertoApi(string url, string token){
+    public CepAbertoApi(string token)
+    {
         Token = $"Token token={token}";
     }
 

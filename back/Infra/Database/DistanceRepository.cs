@@ -17,7 +17,7 @@ public class DistanceRepository
         await _dbContext.Distances.AddAsync(distance);
         await _dbContext.SaveChangesAsync();
 
-        return distance; 
+        return distance;
     }
 
     public async Task<Distance?> GetAsync(Distance distance)
@@ -31,7 +31,7 @@ public class DistanceRepository
             )
         );
 
-        return existingDistance; 
+        return existingDistance;
     }
 
 
@@ -39,7 +39,7 @@ public class DistanceRepository
     {
         var existingDistance = await _dbContext.Distances
         .Where(d => (
-            d.De == distance.De && 
+            d.De == distance.De &&
             d.Para == distance.Para &&
             d.UserId == distance.UserId))
         .ExecuteUpdateAsync(d => d.SetProperty(e => e.Distancia, distance.Distancia));
@@ -50,7 +50,8 @@ public class DistanceRepository
     public async Task<Distance> AddOrUpdateAsync(Distance distance)
     {
         Distance? existingDistance = await GetAsync(distance);
-        if(existingDistance == null){
+        if (existingDistance == null)
+        {
             return await AddAsync(distance);
         }
         return await UpdateAsync(distance);
@@ -58,7 +59,7 @@ public class DistanceRepository
 
     public async Task<Distance[]> ListByUserAsync(User user)
     {
-        var distances =  await _dbContext.Distances.Where(d => d.UserId == user.Id).ToListAsync();
+        var distances = await _dbContext.Distances.Where(d => d.UserId == user.Id).ToListAsync();
         return distances.ToArray();
     }
 }
