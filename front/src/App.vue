@@ -1,85 +1,574 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts" setup>
+import { ref, onMounted } from 'vue';
+import cepInput from './components/cep-input.vue';
+
+interface registro {
+    id: number
+    de: string
+    para: string
+    distancia: number
+}
+
+const cepModal1 = ref('');
+const cepModal2 = ref('');
+const cepTable1 = ref('');
+const cepTable2 = ref('');
+const token = ref<string>('');
+const username = ref<string>('teste');
+const usernameRegister = ref('');
+const emailRegister = ref('');
+const passwordRegister = ref('');
+const cPasswordRegister = ref('');
+const emailLogin = ref('');
+const passwordLogin = ref('');
+const registros = ref<registro[]>([]);
+const carregando = ref(true);
+const importando = ref(false);
+const registrando = ref(false);
+const entrando = ref(false);
+const showPopup = ref(false);
+const calculando = ref(false);
+const popupMessage = ref('');
+const typePopup = ref('bg-success');
+const msImportando = ref('importar');
+const msCalcular = ref('Calcular');
+const msRegistrando = ref('Registrar');
+const msEntrando = ref('Entrar');
+
+function errorPopUp(message: string) {
+    popupMessage.value = message;
+    typePopup.value = 'bg-danger';
+    showPopup.value = true;
+    setTimeout(() => (showPopup.value = false), 10000);
+}
+
+function successPopup(message: string) {
+    popupMessage.value = message;
+    typePopup.value = 'bg-success';
+    showPopup.value = true;
+    setTimeout(() => (showPopup.value = false), 10000);
+}
+
+async function fetchRegistros() {
+    carregando.value = true;
+    try {
+        const response = await fetch('http://127.0.0.1:7000/api/listar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Token': token.value
+            },
+            body: JSON.stringify({
+                funcao: 'buscarDistancias',
+                de: cepTable1.value,
+                para: cepTable2.value,
+            }),
+        });
+
+        if (!response.ok) throw new Error('Erro na resposta da rede');
+        const data = await response.json();
+        registros.value = data;
+        localStorage.setItem('registros', JSON.stringify(data));
+    } catch (error) {
+        errorPopUp('Erro ao buscar registros');
+    } finally {
+        carregando.value = false;
+    }
+}
+
+async function includeCalculo() {
+    msCalcular.value = 'Calcular...';
+    calculando.value = true;
+
+    const cacheCalculo = JSON.parse(localStorage.getItem('calcular') || '[]');
+    const jaExiste = cacheCalculo.some(
+        (registro: any) => registro.cepModal1 === cepModal1.value && registro.cepModal2 === cepModal2.value
+    );
+
+    if (jaExiste) {
+        errorPopUp('Calculo já efetuado anteriormente');
+        calculando.value = false;
+        msCalcular.value = 'Calcular';
+        return;
+    }
+
+    try {
+        const response = await fetch('http://127.0.0.1:7000/api/calcular', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Token': token.value
+            },
+            body: JSON.stringify({
+                de: cepModal1.value,
+                para: cepModal2.value,
+            }),
+        });
+
+        const data = await response.json();
+        if (data.error) {
+            errorPopUp(data.error);
+        } else {
+            successPopup(data.success);
+            cacheCalculo.push({ cepModal1: cepModal1.value, cepModal2: cepModal2.value });
+            cacheCalculo.push({ cepModal1: cepModal2.value, cepModal2: cepModal1.value });
+            localStorage.setItem('calcular', JSON.stringify(cacheCalculo));
+            cepTable1.value = '';
+            cepTable2.value = '';
+            fetchRegistros();
+        }
+    } catch (error) {
+        errorPopUp('Erro ao incluir registro');
+    } finally {
+        calculando.value = false;
+        msCalcular.value = 'Calcular';
+    }
+}
+
+async function importarCeps(event: Event) {
+    const arquivo = (event.target as HTMLInputElement).files?.[0];
+    if (!arquivo) return;
+
+    const formData = new FormData();
+    formData.append('arquivo', arquivo);
+    formData.append('funcao', 'importarCeps');
+    importando.value = true;
+    msImportando.value = 'Importando...';
+
+    try {
+        const response = await fetch('http://127.0.0.1:7000/api/importar', {
+            method: 'POST',
+            headers: {
+                'Token': token.value
+            },
+            body: formData,
+        });
+
+        const data = await response.json();
+        if (data.error) {
+            errorPopUp(data.error);
+        } else {
+            successPopup(data.success);
+            fetchRegistros();
+        }
+    } catch (error) {
+        errorPopUp('Erro ao importar CEPs');
+    } finally {
+        importando.value = false;
+        msImportando.value = 'Importar';
+    }
+}
+
+async function includeUser() {
+    if (passwordRegister.value != cPasswordRegister.value) {
+        errorPopUp('Senhas não conferem')
+        return
+    }
+    msRegistrando.value = 'Registrando...';
+    registrando.value = true;
+
+    try {
+        const response = await fetch('http://127.0.0.1:7000/api/registrar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: usernameRegister.value,
+                email: emailRegister.value,
+                password: passwordRegister.value,
+            }),
+        });
+
+        const data = await response.json();
+        if (data.error) {
+            errorPopUp(data.error);
+        } else {
+            successPopup("Registro efetuado com sucesso.");
+        }
+    } catch (error) {
+        errorPopUp('Erro ao se registrar');
+    } finally {
+        registrando.value = false;
+        msRegistrando.value = 'Registrar';
+    }
+}
+
+async function loginUser() {
+    msEntrando.value = 'Entrando...';
+    entrando.value = true;
+
+    try {
+        const response = await fetch('http://127.0.0.1:7000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: emailLogin.value,
+                password: passwordLogin.value,
+            }),
+        });
+
+        const data = await response.json();
+        if (data.error) {
+            errorPopUp(data.error);
+        } else {
+            username.value = data.username
+            token.value = data.token
+            successPopup("Login efetuado com sucesso.");
+        }
+    } catch (error) {
+        errorPopUp('Erro ao efetuar login');
+    } finally {
+        entrando.value = false;
+        msEntrando.value = 'Entrar';
+    }
+}
+
+function logout() {
+    username.value = ""
+    token.value = ""
+}
+
+onMounted(() => {
+    const cacheRegistros = localStorage.getItem('registros');
+    registros.value = cacheRegistros ? JSON.parse(cacheRegistros) : [];
+    carregando.value = !cacheRegistros;
+});
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <div class="container" id="app">
+        <header class="bg-dark text-white d-flex justify-content-around align-items-center p-2">
+            <h1 class="h4 d-none d-md-block"><i class="bi bi-geo-alt"></i>-----DISTÂNCIA ENTRE CEPS-----<i
+                    class="bi bi-geo-alt"></i></h1>
+            <h1 class="h6 mt-1 d-md-none mu-1"><i class="bi bi-geo-alt"></i>--DISTÂNCIA ENTRE CEPS--<i
+                    class="bi bi-geo-alt"></i>
+            </h1>
+            <button class="navbar-toggler text-light d-md-none" type="button" data-toggle="collapse"
+                data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="p-2 border rounded">
+                    <i class="bi bi-justify"></i>
+                </div>
+            </button>
+        </header>
+        <nav class="navbar navbar-expand-md navbar-light bg-light my-0 rounded-bottom">
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+            <div class="collapse navbar-collapse m-0 p-0" id="navbarNav">
+                <div class="navbar-nav row w-100 m-0 p-0">
+                    <button type="button" class="col text-dark bg-light d-flex justify-content-center border"
+                        data-toggle="modal" data-target="#calculoModal" data-whatever="@mdo" :disabled="importando">
+                        <div class="p-2">
+                            <i class="bi bi-plus-circle"></i>
+                            <span class="ml-2">Calcular</span>
+                        </div>
+                    </button>
+                    <input type="file" class="custom-file-input d-none" id="inputGroupFile04" accept=".csv, text/csv"
+                        aria-describedby="inputGroupFileAddon04" @change="importarCeps" :disabled="importando">
+                    <label class="col text-dark d-flex justify-content-center border m-0"
+                        :class="{ 'loading-button': importando }" for="inputGroupFile04">
+                        <div class="p-2">
+                            <i class="bi bi-file-earmark-arrow-up"></i>
+                            <span class="ml-2">{{ msImportando }}</span>
+                        </div>
+                    </label>
+                    <button v-if="!username" type="button"
+                        class="col text-dark bg-light d-flex justify-content-center border" data-toggle="modal"
+                        data-target="#loginModal">
+                        <div class="p-2">
+                            <i class="bi bi-door-open"></i>
+                            <span class="ml-2">Entrar</span>
+                        </div>
+                    </button>
+                    <button v-if="!username" type="button"
+                        class="col text-dark bg-light d-flex justify-content-center border" data-toggle="modal"
+                        data-target="#registerModal">
+                        <div class="p-2">
+                            <i class="bi bi-person-plus"></i>
+                            <span class="ml-2">Registrar</span>
+                        </div>
+                    </button>
+                    <button v-if="username" type="button"
+                        class="col text-dark bg-light d-flex justify-content-center border" disable>
+                        <div class="p-2">
+                            <i class="bi bi-person-circle"></i>
+                            <span class="ml-2">{{ username }}</span>
+                        </div>
+                    </button>
+                    <button v-if="username" type="button" @click="logout"
+                        class="col text-dark bg-light d-flex justify-content-center border">
+                        <div class="p-2">
+                            <i class="bi bi-x-circle"></i>
+                            <span class="ml-2">Sair</span>
+                        </div>
+                    </button>
+                    <button type="button" class="col-1 text-dark bg-light d-flex justify-content-center border"
+                        @click="fetchRegistros">
+                        <div class="p-2">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <main class="p-5">
+            <form @submit.prevent="fetchRegistros">
+                <div class="table">
+                    <div class="input-group mb-3">
+                        <cep-input v-model="cepTable1"></cep-input>
+                        <cep-input v-model="cepTable2"></cep-input>
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon"><i
+                                class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <table class="table table-light table-striped">
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">CEP 1</th>
+                        <th scope="col">CEP 2</th>
+                        <th scope="col">DISTÂNCIA (Km)</th>
+                    </tr>
+                </thead>
+                <tbody v-if="carregando">
+                    <tr>
+                        <td colspan="3">Carregando...</td>
+                    </tr>
+                </tbody>
+                <tbody v-else-if="registros.length === 0">
+                    <tr>
+                        <td colspan="3">Nenhum resultado encontrado</td>
+                    </tr>
+                </tbody>
+                <tbody v-else>
+                    <tr v-for="registro in registros" :key="registro.id">
+                        <td>{{ registro.de }}</td>
+                        <td>{{ registro.para }}</td>
+                        <td>{{ registro.distancia }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </main>
+
+        <a href="https://github.com/ciprianoLucas">
+            <footer class="bg-dark text-white text-center p-2 fixed-bottom"> Lucas H. Cipriano &copy; 2024</footer>
+        </a>
+
+        <div class="modal fade" id="calculoModal" tabindex="-1" aria-labelledby="calculoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="calculoModalLabel">Calcular distância</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="includeCalculo">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="cep-1" class="col-form-label">CEP 1:</label>
+                                <cep-input v-model="cepModal1"></cep-input>
+                            </div>
+                            <div class="form-group">
+                                <label for="cep-2" class="col-form-label">CEP 2:</label>
+                                <cep-input v-model="cepModal2"></cep-input>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" :class="{ 'loading-button': calculando }"
+                                :disabled="calculando">{{ msCalcular }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="registerModalLabel">Registrar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="includeUser">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="username-register">Nome de usuário:</label>
+                                <input id="username-register" class="form-control" v-model="usernameRegister" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email-register">E-mail:</label><br>
+                                <input type="email" id="email-register" class="form-control" v-model="emailRegister" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password-register">Senha:</label><br>
+                                <input type="password" id="password-register" class="form-control"
+                                    v-model="passwordRegister" />
+                            </div>
+                            <div class="form-group">
+                                <label for="c-password-register">Repita a senha:</label>
+                                <input type="password" id="c-password-register" class="form-control"
+                                    v-model="cPasswordRegister" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" :class="{ 'loading-button': registrando }"
+                                :disabled="registrando">{{ msRegistrando }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Entrar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="loginUser">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="email-login">E-mail:</label><br>
+                                <input type="email" id="email-login" class="form-control" v-model="emailLogin" />
+                            </div>
+                            <div class="form-group">
+                                <label for="cPassword-login">Senha:</label>
+                                <input type="password" id="password-login" class="form-control"
+                                    v-model="passwordLogin" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" :class="{ 'loading-button': entrando }"
+                                :disabled="entrando">{{ msEntrando }}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <transition name="fade">
+            <div v-if="showPopup" class="popup" :class="typePopup">
+                {{ popupMessage }}
+            </div>
+        </transition>
     </div>
-  </header>
-
-  <RouterView />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: rgb(187, 187, 187);
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
+.container {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(231, 231, 231);
+    padding: 0;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 120px);
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+nav a:hover,
+nav button:hover,
+nav label:hover {
+    text-decoration: none;
+    background: #cfcfcf;
+    cursor: pointer;
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+footer {
+    font-size: 0.8rem;
+}
 
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.table {
+    font-size: 0.8rem;
+}
+
+/* Para navegadores WebKit (Chrome, Safari, etc.) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.popup {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 5px;
+    z-index: 9999;
+    /* display: none; */
+    animation: fadeOut 10s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.loading-button {
+    animation: animacao 1s infinite alternate;
+    cursor: grab;
+}
+
+@keyframes animacao {
+    from {
+        transform: translateY(-5);
+    }
+
+    to {
+        transform: translateY(-5px);
+    }
 }
 </style>
