@@ -11,19 +11,20 @@ public class AppDbContext : DbContext
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public static DbContextOptions<AppDbContext> CreateOptions(
-        string DbHost,
-        string DbName,
-        string DbUser,
-        string DbPassword,
-        string DbPort = "5432"
-    )
+    public static string genetateStringbySettings(Settings settings)
     {
         string connectionString =
-            $"Host={DbHost};" +
-            $"Database={DbName};" +
-            $"Username={DbUser};" +
-            $"Password={DbPassword}";
+            $"Host={settings.DbHost};" +
+            $"Database={settings.DbName};" +
+            $"Username={settings.DbUser};" +
+            $"Password={settings.DbPassword}";
+
+        return connectionString;
+    }
+
+    public static DbContextOptions<AppDbContext> CreateOptions(Settings settings)
+    {
+        string connectionString = genetateStringbySettings(settings);
 
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseNpgsql(connectionString)
