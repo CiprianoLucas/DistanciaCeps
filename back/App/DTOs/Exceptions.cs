@@ -2,7 +2,7 @@ namespace Back.App.DTOs;
 
 public class ExceptionResponseDto
 {
-    public string Message;
+    public string Message { get; set; }
 
     public ExceptionResponseDto(string message)
     {

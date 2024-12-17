@@ -1,4 +1,12 @@
 namespace Back.Infra.API;
+using System.Text.Json;
+using System.Net.Http;
+
+public class JsonCepAbertoResponse
+{
+    public required string latitude { get; set; }
+    public required string longitude { get; set; }
+}
 
 public class CepAbertoApi
 {
@@ -13,17 +21,29 @@ public class CepAbertoApi
         Token = $"Token token={token}";
     }
 
+
+
     public async Task<(float Latitude, float Longitude)> GetLatAndLongAsync(string cep)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, $"{Url}cep?cep={cep}");
         request.Headers.Add("Authorization", Token);
         var response = await client.SendAsync(request);
-        float latitude = 1;
-        float longitude = 2;
         response.EnsureSuccessStatusCode();
-        await response.Content.ReadAsStringAsync();
 
-        return (latitude, longitude);
+        var content = await response.Content.ReadAsStringAsync();
+        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        try
+        {
+            var data = JsonSerializer.Deserialize<JsonCepAbertoResponse>(content, options);
+            float latitude = float.Parse((string)data.latitude);
+            float longitude = float.Parse((string)data.longitude);
+            return (latitude, longitude);
+        }
+        catch
+        {
+            throw new KeyNotFoundException("CEP não encontrado: " + cep);
+        }
+
     }
 
 }

@@ -22,7 +22,7 @@ public class AuthDependence
             iterationCount: 10000,
             numBytesRequested: 256 / 8));
 
-        if (storedHash == computedHash)
+        if (storedHash != computedHash)
         {
             throw new UnauthorizedAccessException("Usuário ou senha inválidos.");
         };

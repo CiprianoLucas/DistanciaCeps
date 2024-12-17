@@ -1,5 +1,4 @@
 using Back.Domain.Services;
-using Back.Domain.Entities;
 using Back.Infra.Database;
 using Back.Infra.API;
 using Back.Infra.Dependence;
@@ -14,6 +13,17 @@ public class Settings
     public string DbHost { get; set; } = "";
     public string SecretKey { get; set; } = "";
     public string CepAbertoToken { get; set; } = "";
+
+    public Settings (){
+        DotNetEnv.Env.Load(".env");
+        DbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "default_db";
+        DbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "user";
+        DbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "password";
+        DbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
+        DbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
+        SecretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? "secret_key";
+        CepAbertoToken = Environment.GetEnvironmentVariable("CEP_ABERTO_TOKEN") ?? "cep_aberto_token";
+    }
 }
 
 public class Container

@@ -9,9 +9,9 @@ public class DistanceDto
 
 public class DistanceResponseDto
 {
-    public string De;
-    public string Para;
-    public float Distancia;
+    public string De { get; set; }
+    public string Para { get; set; }
+    public float Distancia { get; set; }
 
     public DistanceResponseDto(string de, string para, float distancia)
     {
