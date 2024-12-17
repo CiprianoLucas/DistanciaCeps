@@ -1,7 +1,7 @@
 using Back.Domain.Entities;
 using Back.Infra.Database;
 using Back.Infra.API;
-
+using System.Text.RegularExpressions;
 
 namespace Back.Domain.Services;
 public class DistanceService
@@ -14,13 +14,21 @@ public class DistanceService
         _DistanceRepository = repository;
         _CepAbertoApi = cepAbertoApi;
     }
-    public async Task<Distance[]> GetDistancesByUserAsync(User user)
+    public async Task<Distance[]> GetDistancesByUserAsync(User user, string? de, string? para)
     {
-        return await _DistanceRepository.ListByUserAsync(user);
+        string deValidated = validateCep(de);
+        string paraValidated = validateCep(para);
+        return await _DistanceRepository.ListByUserAsync(user, deValidated, paraValidated);
     }
 
     public async Task<Distance> GetCalculateAndSaveAsync(string de, string para, User user)
     {
+        de = validateCep(de);
+        para = validateCep(para);
+        if (de == "" || para == "")
+        {
+            throw new ArgumentNullException("Cep nulo");
+        }
         var (DeLat, DeLong) = await GetCoordByCep(de);
         await Task.Delay(2000);
         var (ParaLat, ParaLong) = await GetCoordByCep(para);
@@ -58,5 +66,11 @@ public class DistanceService
     private double ToRadians(double angle)
     {
         return angle * Math.PI / 180;
+    }
+
+    private string validateCep(string? cep)
+    {
+        if (cep == null) return "";
+        return Regex.Replace(cep, @"\D", "");
     }
 }

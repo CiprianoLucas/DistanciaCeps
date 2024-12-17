@@ -13,8 +13,7 @@ const cepModal1 = ref('');
 const cepModal2 = ref('');
 const cepTable1 = ref('');
 const cepTable2 = ref('');
-const token = ref<string>('');
-const username = ref<string>('teste');
+const username = ref<string>('');
 const usernameRegister = ref('');
 const emailRegister = ref('');
 const passwordRegister = ref('');
@@ -51,26 +50,25 @@ function successPopup(message: string) {
 
 async function fetchRegistros() {
     carregando.value = true;
+    let filter = "";
+    if (cepTable1.value && cepTable2.value) {
+        filter = `?de=${cepTable1.value}&para=${cepTable2.value}`;
+    } else if (cepTable1.value) {
+        filter = `?de=${cepTable1.value}`;
+    } else if (cepTable2.value) {
+        filter = `?para=${cepTable2.value}`;
+    }
     try {
-        const response = await fetch('http://127.0.0.1:7000/api/listar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Token': token.value
-            },
-            body: JSON.stringify({
-                funcao: 'buscarDistancias',
-                de: cepTable1.value,
-                para: cepTable2.value,
-            }),
-        });
+        const response = await fetch('http://localhost:7000/api/Distance/list' + filter, { credentials: 'include' })
 
-        if (!response.ok) throw new Error('Erro na resposta da rede');
         const data = await response.json();
+        if (!response.ok) {
+            errorPopUp(data.message);
+            return
+        }
         registros.value = data;
-        localStorage.setItem('registros', JSON.stringify(data));
     } catch (error) {
-        errorPopUp('Erro ao buscar registros');
+        errorPopUp("Erro ao buscar cálculos");
     } finally {
         carregando.value = false;
     }
@@ -79,26 +77,15 @@ async function fetchRegistros() {
 async function includeCalculo() {
     msCalcular.value = 'Calcular...';
     calculando.value = true;
-
-    const cacheCalculo = JSON.parse(localStorage.getItem('calcular') || '[]');
-    const jaExiste = cacheCalculo.some(
-        (registro: any) => registro.cepModal1 === cepModal1.value && registro.cepModal2 === cepModal2.value
-    );
-
-    if (jaExiste) {
-        errorPopUp('Calculo já efetuado anteriormente');
-        calculando.value = false;
-        msCalcular.value = 'Calcular';
-        return;
-    }
+    debugger
 
     try {
-        const response = await fetch('http://127.0.0.1:7000/api/calcular', {
+        const response = await fetch('http://localhost:7000/api/Distance/Calculate', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Token': token.value
+                'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify({
                 de: cepModal1.value,
                 para: cepModal2.value,
@@ -109,16 +96,13 @@ async function includeCalculo() {
         if (data.error) {
             errorPopUp(data.error);
         } else {
-            successPopup(data.success);
-            cacheCalculo.push({ cepModal1: cepModal1.value, cepModal2: cepModal2.value });
-            cacheCalculo.push({ cepModal1: cepModal2.value, cepModal2: cepModal1.value });
-            localStorage.setItem('calcular', JSON.stringify(cacheCalculo));
+            successPopup(`Distância é de ${data.distancia}Km`);
             cepTable1.value = '';
             cepTable2.value = '';
             fetchRegistros();
         }
-    } catch (error) {
-        errorPopUp('Erro ao incluir registro');
+    } catch (message) {
+        errorPopUp('Erro ao efetuar cálculo');
     } finally {
         calculando.value = false;
         msCalcular.value = 'Calcular';
@@ -136,17 +120,15 @@ async function importarCeps(event: Event) {
     msImportando.value = 'Importando...';
 
     try {
-        const response = await fetch('http://127.0.0.1:7000/api/importar', {
+        const response = await fetch('http://localhost:7000/api/importar', {
             method: 'POST',
-            headers: {
-                'Token': token.value
-            },
+            credentials: 'include',
             body: formData,
         });
 
         const data = await response.json();
-        if (data.error) {
-            errorPopUp(data.error);
+        if (data.message) {
+            errorPopUp(data.message);
         } else {
             successPopup(data.success);
             fetchRegistros();
@@ -168,11 +150,12 @@ async function includeUser() {
     registrando.value = true;
 
     try {
-        const response = await fetch('http://127.0.0.1:7000/api/registrar', {
+        const response = await fetch('http://localhost:7000/api/User/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify({
                 username: usernameRegister.value,
                 email: emailRegister.value,
@@ -181,8 +164,8 @@ async function includeUser() {
         });
 
         const data = await response.json();
-        if (data.error) {
-            errorPopUp(data.error);
+        if (data.message) {
+            errorPopUp(data.message);
         } else {
             successPopup("Registro efetuado com sucesso.");
         }
@@ -199,11 +182,12 @@ async function loginUser() {
     entrando.value = true;
 
     try {
-        const response = await fetch('http://127.0.0.1:7000/api/login', {
+        const response = await fetch('http://localhost:7000/api/User/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
             body: JSON.stringify({
                 email: emailLogin.value,
                 password: passwordLogin.value,
@@ -211,30 +195,44 @@ async function loginUser() {
         });
 
         const data = await response.json();
-        if (data.error) {
-            errorPopUp(data.error);
+        if (data.message) {
+            errorPopUp(data.message);
+            msEntrando.value = 'Entrar';
+            entrando.value = false;
         } else {
             username.value = data.username
-            token.value = data.token
             successPopup("Login efetuado com sucesso.");
+            msEntrando.value = 'Já conectado';
+            fetchRegistros()
         }
     } catch (error) {
         errorPopUp('Erro ao efetuar login');
-    } finally {
-        entrando.value = false;
         msEntrando.value = 'Entrar';
+        entrando.value = false;
     }
 }
 
-function logout() {
+async function logout() {
     username.value = ""
-    token.value = ""
+    msEntrando.value = 'Entrar';
+    entrando.value = false;
+    registros.value = []
+    successPopup("Desconectado.");
+    await fetch('http://localhost:7000/api/User/logout', { credentials: 'include' });
+}
+
+async function verifyLogin() {
+    const response = await fetch('http://localhost:7000/api/User/', {
+        credentials: 'include'
+    });
+    const data = await response.json();
+    username.value = data.username
+
 }
 
 onMounted(() => {
-    const cacheRegistros = localStorage.getItem('registros');
-    registros.value = cacheRegistros ? JSON.parse(cacheRegistros) : [];
-    carregando.value = !cacheRegistros;
+    verifyLogin()
+    fetchRegistros()
 });
 </script>
 

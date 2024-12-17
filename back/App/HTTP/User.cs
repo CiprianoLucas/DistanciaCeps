@@ -52,7 +52,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("login")]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserLoginResponseDto))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ExceptionResponseDto))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(ExceptionResponseDto))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ExceptionResponseDto))]
@@ -69,14 +69,14 @@ public class UserController : ControllerBase
             var cookieOptions = new CookieOptions
             {
                 HttpOnly = true,
-                SameSite = SameSiteMode.Strict,
+                SameSite = SameSiteMode.Unspecified,
                 Expires = DateTimeOffset.UtcNow.AddHours(1)
             };
             Response.Cookies.Append("X-Access-Token", token, cookieOptions);
 
             _logger.LogInformation("Login bem-sucedido para o usuário: {Email}", dto.Email);
 
-            return NoContent();
+            return Ok(UserLoginResponseDto.Create(user.Username));
         }
         catch (UnauthorizedAccessException ex)
         {
@@ -100,8 +100,9 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpPost("logout")]
+    [HttpGet("logout")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ExceptionResponseDto))]
     public IActionResult Logout()
     {
         try
@@ -115,6 +116,24 @@ public class UserController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError("Erro inesperado durante o logout.");
+            return StatusCode(500, ExceptionResponseDto.Create(ex.Message));
+        }
+    }
+
+    [HttpGet("")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserLoginResponseDto))]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ExceptionResponseDto))]
+    public async Task<ActionResult<UserLoginResponseDto>> VerifyLogin()
+    {
+        try
+        {
+            _logger.LogInformation("Verificando se usuário está autenticado");
+            User user = await _container.TokenService.VerifyToken(Request.Cookies["X-Access-Token"]);
+            return Ok(UserLoginResponseDto.Create(user.Username));
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError("Erro inesperado durante a verificação de login.");
             return StatusCode(500, ExceptionResponseDto.Create(ex.Message));
         }
     }
