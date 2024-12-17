@@ -3,13 +3,14 @@ namespace Back;
 
 public class Settings
 {
-    public string DbName { get; set; } = "";
-    public string DbUser { get; set; } = "";
-    public string DbPassword { get; set; } = "";
-    public string DbPort { get; set; } = "";
-    public string DbHost { get; set; } = "";
-    public string SecretKey { get; set; } = "";
-    public string CepAbertoToken { get; set; } = "";
+    public string DbName { get; set; }
+    public string DbUser { get; set; }
+    public string DbPassword { get; set; }
+    public string DbPort { get; set; }
+    public string DbHost { get; set; }
+    public string SecretKey { get; set; }
+    public string CepAbertoToken { get; set; }
+    public string Host { get; set; }
 
     public Settings()
     {
@@ -21,6 +22,7 @@ public class Settings
         DbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
         SecretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? "secret_key";
         CepAbertoToken = Environment.GetEnvironmentVariable("CEP_ABERTO_TOKEN") ?? "cep_aberto_token";
+        Host = Environment.GetEnvironmentVariable("HOST") ?? "localhost";
     }
 }
 public class Program

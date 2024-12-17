@@ -20,7 +20,6 @@ public class Build
             .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Month)
             .CreateLogger();
 
-        builder.Logging.ClearProviders();
         builder.Logging.AddSerilog();
 
 

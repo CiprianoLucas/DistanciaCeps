@@ -2,14 +2,13 @@ using Back.Domain.Services;
 using Back.Infra.Database;
 using Back.Infra.API;
 using Back.Infra.Dependence;
-using Back;
+using Back.Infra.Cash;
 
 namespace Back.App;
 
 
 public class Container
 {
-    public Settings? Settings = new Settings();
     public UserService UserService;
     public DistanceService DistanceService;
     public TokenService TokenService;
@@ -17,10 +16,12 @@ public class Container
     public Container()
     {
         var settings = Program.Settings;
+        var cash = Cash.Connect(settings);
+
         var TokenDependence = new TokenDependence(settings.SecretKey);
         var AuthDependence = new AuthDependence();
-
-        var CepAbertoApi = new CepAbertoApi(settings.CepAbertoToken);
+        var client = new HttpClient();
+        var CepAbertoApi = new CepAbertoApi(settings.CepAbertoToken, client, cash);
 
         var options = AppDbContext.CreateOptions(settings);
 

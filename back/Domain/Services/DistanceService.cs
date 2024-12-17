@@ -1,7 +1,7 @@
 using Back.Domain.Entities;
 using Back.Infra.Database;
 using Back.Infra.API;
-using System.Text.RegularExpressions;
+using Back.Domain.Validations;
 
 namespace Back.Domain.Services;
 public class DistanceService
@@ -16,22 +16,21 @@ public class DistanceService
     }
     public async Task<Distance[]> GetDistancesByUserAsync(User user, string? de, string? para)
     {
-        string deValidated = validateCep(de);
-        string paraValidated = validateCep(para);
+        string deValidated = CepValidator.Formate(de);
+        string paraValidated = CepValidator.Formate(para);
         return await _DistanceRepository.ListByUserAsync(user, deValidated, paraValidated);
     }
 
-    public async Task<Distance> GetCalculateAndSaveAsync(string de, string para, User user)
+    public async Task<(Distance, bool)> GetCalculateAndSaveAsync(string de, string para, User user)
     {
-        de = validateCep(de);
-        para = validateCep(para);
+        de = CepValidator.Formate(de);
+        para = CepValidator.Formate(para);
         if (de == "" || para == "")
         {
-            throw new ArgumentNullException("Cep nulo");
+            throw new ArgumentNullException("Cep não pode estar em branco");
         }
-        var (DeLat, DeLong) = await GetCoordByCep(de);
-        await Task.Delay(2000);
-        var (ParaLat, ParaLong) = await GetCoordByCep(para);
+        var (DeLat, DeLong, cashedDe) = await GetCoordByCep(de);
+        var (ParaLat, ParaLong, cashedPara) = await GetCoordByCep(para, !cashedDe);
         float distance = Calculate(DeLat, DeLong, ParaLat, ParaLong);
 
         var Distance = new Distance
@@ -43,13 +42,13 @@ public class DistanceService
             UserId = user.Id
         };
         Distance = await _DistanceRepository.AddOrUpdateAsync(Distance);
-
-        return Distance;
+        bool cached = cashedDe & cashedPara;
+        return (Distance, cached);
 
     }
-    public async Task<(float, float)> GetCoordByCep(string cep)
+    public async Task<(float, float, bool)> GetCoordByCep(string cep, bool wait = false)
     {
-        return await _CepAbertoApi.GetLatAndLongAsync(cep);
+        return await _CepAbertoApi.GetLatAndLongAsync(cep, wait);
     }
     public float Calculate(float DeLat, float DeLong, float ParaLat, float ParaLong)
     {
@@ -66,11 +65,5 @@ public class DistanceService
     private double ToRadians(double angle)
     {
         return angle * Math.PI / 180;
-    }
-
-    private string validateCep(string? cep)
-    {
-        if (cep == null) return "";
-        return Regex.Replace(cep, @"\D", "");
     }
 }

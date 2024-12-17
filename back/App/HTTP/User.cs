@@ -93,6 +93,11 @@ public class UserController : ControllerBase
             _logger.LogWarning("Dados inválidos fornecidos para o login do usuário: {Email}. Erro: {Message}", dto.Email, ex.Message);
             return BadRequest(ExceptionResponseDto.Create(ex.Message));
         }
+        catch (ArgumentException ex)
+        {
+            _logger.LogWarning("Argumento inválido: {Message}", ex.Message);
+            return BadRequest(ExceptionResponseDto.Create(ex.Message));
+        }
         catch (Exception ex)
         {
             _logger.LogError("Erro inesperado durante o login para o usuário: {Email}. Erro: {Message}", dto.Email, ex.Message);

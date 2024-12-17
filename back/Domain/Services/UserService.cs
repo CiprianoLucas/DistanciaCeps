@@ -1,6 +1,7 @@
 using Back.Domain.Entities;
 using Back.Infra.Database;
 using Back.Infra.Dependence;
+using Back.Domain.Validations;
 
 
 namespace Back.Domain.Services;
@@ -21,6 +22,10 @@ public class UserService
 
     public async Task<User> CreateUserAsync(string username, string password, string email)
     {
+        UsernameValidator.Validate(username);
+        PasswordValidator.Validate(password);
+        EmailValidator.Validate(email);
+
         if (await GetByEmailAsync(email) != null)
             throw new InvalidOperationException("Usuário já cadastrado com este e-mail.");
 

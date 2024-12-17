@@ -29,7 +29,7 @@ public class DistanceController : ControllerBase
             _logger.LogInformation("Iniciando cálculo de distância de {De} para {Para}.", dto.De, dto.Para);
 
             User user = await _container.TokenService.VerifyToken(Request.Cookies["X-Access-Token"]);
-            Distance distance = await _container.DistanceService.GetCalculateAndSaveAsync(dto.De, dto.Para, user);
+            var (distance, _) = await _container.DistanceService.GetCalculateAndSaveAsync(dto.De, dto.Para, user);
             _logger.LogInformation("Cálculo concluído com sucesso. Distância: {Distancia} km.", distance.Distancia);
 
             return Ok(DistanceResponseDto.Create(distance.De, distance.Para, distance.Distancia));

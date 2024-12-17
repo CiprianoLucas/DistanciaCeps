@@ -93,8 +93,8 @@ async function includeCalculo() {
         });
 
         const data = await response.json();
-        if (data.error) {
-            errorPopUp(data.error);
+        if (data.message) {
+            errorPopUp(data.message);
         } else {
             successPopup(`Distância é de ${data.distancia}Km`);
             cepTable1.value = '';

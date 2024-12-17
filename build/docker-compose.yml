@@ -13,6 +13,7 @@ services:
     depends_on:
       - db
       - front
+      - redis
     networks:
       - distancia-ceps-network
   db:
@@ -48,6 +49,15 @@ services:
       - db
     ports:
       - "7001:7001"
+    networks:
+      - distancia-ceps-network
+
+  redis:
+    image: redis:7
+    container_name: distancia-ceps-redis
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    ports:
+      - "6379:6379"
     networks:
       - distancia-ceps-network
     

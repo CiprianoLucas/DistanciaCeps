@@ -2397,3 +2397,949 @@ ORDER BY "MigrationId";
 2024-12-17 14:03:45.556 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.VerifyLogin (back)'
 2024-12-17 14:03:45.557 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/User/ - 500 null application/json; charset=utf-8 7.2611ms
 2024-12-17 14:03:45.557 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 401 null application/json; charset=utf-8 7.2178ms
+2024-12-17 14:06:33.110 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:06:33.111 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:06:33.112 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 2.2906ms
+2024-12-17 14:06:33.118 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 40
+2024-12-17 14:06:33.122 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:06:33.122 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:06:33.130 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:06:33.151 +00:00 [INF] Iniciando o registro do usuário: 
+2024-12-17 14:06:33.846 +00:00 [INF] Usuário registrado com sucesso: 
+2024-12-17 14:06:33.847 +00:00 [INF] Executing CreatedResult, writing value of type 'Back.App.DTOs.UserRegisterResponseDto'.
+2024-12-17 14:06:33.849 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 719.3536ms
+2024-12-17 14:06:33.849 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:06:33.850 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 201 null application/json; charset=utf-8 731.7383ms
+2024-12-17 14:06:37.378 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 40
+2024-12-17 14:06:37.378 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:06:37.379 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:06:37.379 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:06:37.383 +00:00 [INF] Iniciando o registro do usuário: 
+2024-12-17 14:06:37.405 +00:00 [WRN] Falha ao registrar usuário: . Erro: Usuário já cadastrado com este e-mail.
+2024-12-17 14:06:37.406 +00:00 [INF] Executing ConflictObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:06:37.406 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 26.7762ms
+2024-12-17 14:06:37.406 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:06:37.406 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 409 null application/json; charset=utf-8 28.2962ms
+2024-12-17 14:06:40.849 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - null null
+2024-12-17 14:06:40.849 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:06:40.849 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - 204 null null 0.6678ms
+2024-12-17 14:06:40.853 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 26
+2024-12-17 14:06:40.854 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:06:40.854 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 14:06:40.861 +00:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:06:40.865 +00:00 [INF] Tentando fazer login para o usuário: 
+2024-12-17 14:06:40.919 +00:00 [INF] Login bem-sucedido para o usuário: 
+2024-12-17 14:06:40.919 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.UserLoginResponseDto'.
+2024-12-17 14:06:40.920 +00:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 59.2828ms
+2024-12-17 14:06:40.920 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 14:06:40.921 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 200 null application/json; charset=utf-8 67.4288ms
+2024-12-17 14:06:40.924 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:06:40.924 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:06:40.924 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:06:40.925 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:06:40.926 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:06:40.959 +00:00 [INF] Listagem de distâncias concluída. Total de 0 distâncias encontradas.
+2024-12-17 14:06:40.959 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:06:40.963 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 38.5187ms
+2024-12-17 14:06:40.963 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:06:40.963 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 39.2935ms
+2024-12-17 14:07:21.057 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - null null
+2024-12-17 14:07:21.057 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:07:21.057 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - 204 null null 0.6217ms
+2024-12-17 14:07:21.061 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - application/json 19
+2024-12-17 14:07:21.062 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:07:21.062 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:07:21.071 +00:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:07:21.078 +00:00 [INF] Iniciando cálculo de distância de  para .
+2024-12-17 14:07:21.082 +00:00 [WRN] Argumento nulo: Value cannot be null. (Parameter 'Cep nulo')
+2024-12-17 14:07:21.082 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:07:21.083 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 11.7773ms
+2024-12-17 14:07:21.083 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:07:21.083 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - 400 null application/json; charset=utf-8 21.5155ms
+2024-12-17 14:07:21.090 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:07:21.091 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:07:21.091 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:07:21.091 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:07:21.093 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:07:21.098 +00:00 [INF] Listagem de distâncias concluída. Total de 0 distâncias encontradas.
+2024-12-17 14:07:21.098 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:07:21.099 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 7.2053ms
+2024-12-17 14:07:21.099 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:07:21.099 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 8.2723ms
+2024-12-17 14:09:28.511 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/User/ - null null
+2024-12-17 14:09:28.512 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:09:28.512 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:09:28.512 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.VerifyLogin (back)'
+2024-12-17 14:09:28.512 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:09:28.512 +00:00 [INF] Route matched with {action = "VerifyLogin", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] VerifyLogin() on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:09:28.512 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:09:28.512 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:09:28.513 +00:00 [INF] Verificando se usuário está autenticado
+2024-12-17 14:09:28.513 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:09:28.518 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.UserLoginResponseDto'.
+2024-12-17 14:09:28.518 +00:00 [INF] Executed action Back.App.HTTP.UserController.VerifyLogin (back) in 6.1732ms
+2024-12-17 14:09:28.519 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.VerifyLogin (back)'
+2024-12-17 14:09:28.519 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/User/ - 200 null application/json; charset=utf-8 7.7579ms
+2024-12-17 14:09:28.529 +00:00 [INF] Listagem de distâncias concluída. Total de 0 distâncias encontradas.
+2024-12-17 14:09:28.530 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:09:28.530 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 17.499ms
+2024-12-17 14:09:28.530 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:09:28.530 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 18.0295ms
+2024-12-17 14:09:30.452 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - null null
+2024-12-17 14:09:30.453 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:09:30.453 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - 204 null null 0.9812ms
+2024-12-17 14:09:30.457 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - application/json 19
+2024-12-17 14:09:30.457 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:09:30.457 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:09:30.457 +00:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:09:30.459 +00:00 [INF] Iniciando cálculo de distância de  para .
+2024-12-17 14:09:30.462 +00:00 [WRN] Argumento nulo: Value cannot be null. (Parameter 'Cep nulo')
+2024-12-17 14:09:30.463 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:09:30.463 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 5.424ms
+2024-12-17 14:09:30.463 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:09:30.463 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - 400 null application/json; charset=utf-8 6.4572ms
+2024-12-17 14:09:57.201 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - null null
+2024-12-17 14:09:57.202 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:09:57.202 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - 204 null null 0.962ms
+2024-12-17 14:09:57.206 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - application/json 19
+2024-12-17 14:09:57.206 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:09:57.206 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:09:57.206 +00:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:09:57.209 +00:00 [INF] Iniciando cálculo de distância de  para .
+2024-12-17 14:09:57.213 +00:00 [WRN] Argumento nulo: Value cannot be null. (Parameter 'Cep nulo')
+2024-12-17 14:09:57.213 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:09:57.213 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 7.002ms
+2024-12-17 14:09:57.213 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:09:57.214 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - 400 null application/json; charset=utf-8 7.8776ms
+2024-12-17 14:10:21.956 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - null null
+2024-12-17 14:10:21.956 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:10:21.956 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - 204 null null 0.5193ms
+2024-12-17 14:10:21.960 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - application/json 19
+2024-12-17 14:10:21.960 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:10:21.960 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:10:21.960 +00:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:10:21.962 +00:00 [INF] Iniciando cálculo de distância de  para .
+2024-12-17 14:10:21.965 +00:00 [WRN] Argumento nulo: Value cannot be null. (Parameter 'Cep nulo')
+2024-12-17 14:10:21.965 +00:00 [INF] Executing BadRequestObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:10:21.965 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 4.9802ms
+2024-12-17 14:10:21.965 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:10:21.966 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - 400 null application/json; charset=utf-8 5.7949ms
+2024-12-17 14:10:35.401 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list?de=555 - null null
+2024-12-17 14:10:35.401 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:10:35.402 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:10:35.402 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:10:35.414 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:10:35.433 +00:00 [INF] Listagem de distâncias concluída. Total de 0 distâncias encontradas.
+2024-12-17 14:10:35.434 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:10:35.434 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 32.0278ms
+2024-12-17 14:10:35.434 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:10:35.434 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list?de=555 - 200 null application/json; charset=utf-8 33.3361ms
+2024-12-17 14:10:39.250 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:10:39.250 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:10:39.250 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:10:39.250 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:10:39.264 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:10:39.267 +00:00 [INF] Listagem de distâncias concluída. Total de 0 distâncias encontradas.
+2024-12-17 14:10:39.267 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:10:39.267 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 16.703ms
+2024-12-17 14:10:39.267 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:10:39.268 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 17.5113ms
+2024-12-17 14:25:30.214 +00:00 [ERR] Failed executing DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-12-17 14:25:30.357 +00:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2024-12-17 14:25:30.367 +00:00 [INF] Applying migration '20241215030245_InitialCreate'.
+2024-12-17 14:25:30.423 +00:00 [INF] Applying migration '20241216224911_InitialCreated'.
+2024-12-17 14:25:30.427 +00:00 [INF] Applying migration '20241217124112_updateToDocker'.
+2024-12-17 14:25:32.274 +00:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 14:25:32.297 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 14:25:32.297 +00:00 [INF] Hosting environment: Development
+2024-12-17 14:25:32.297 +00:00 [INF] Content root path: /app
+2024-12-17 14:25:38.031 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/User/ - null null
+2024-12-17 14:25:38.031 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:25:38.046 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:25:38.046 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:25:38.054 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 14:25:38.055 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.VerifyLogin (back)'
+2024-12-17 14:25:38.055 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:25:38.073 +00:00 [INF] Route matched with {action = "VerifyLogin", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] VerifyLogin() on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:25:38.075 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:25:38.151 +00:00 [INF] Verificando se usuário está autenticado
+2024-12-17 14:25:38.157 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:25:38.787 +00:00 [ERR] Erro inesperado durante a verificação de login.
+2024-12-17 14:25:38.787 +00:00 [WRN] Tentativa de acesso não autorizado: Token inválido
+2024-12-17 14:25:38.791 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:25:38.791 +00:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:25:38.805 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 727.5298ms
+2024-12-17 14:25:38.805 +00:00 [INF] Executed action Back.App.HTTP.UserController.VerifyLogin (back) in 729.5475ms
+2024-12-17 14:25:38.811 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:25:38.811 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.VerifyLogin (back)'
+2024-12-17 14:25:38.812 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 401 null application/json; charset=utf-8 782.7597ms
+2024-12-17 14:25:38.812 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/User/ - 500 null application/json; charset=utf-8 782.8002ms
+2024-12-17 14:26:08.593 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:26:08.597 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:08.600 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 6.6611ms
+2024-12-17 14:26:08.605 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 63
+2024-12-17 14:26:08.608 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:08.609 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:08.612 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:26:08.626 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:26:08.626 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:26:08.626 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:26:08.627 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 14.4019ms
+2024-12-17 14:26:08.627 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:08.627 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 21.7357ms
+2024-12-17 14:26:18.335 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:26:18.336 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:18.336 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 1.4991ms
+2024-12-17 14:26:18.341 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:26:18.342 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:18.342 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:18.342 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:26:18.348 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:26:18.348 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:26:18.349 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:26:18.349 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 6.4838ms
+2024-12-17 14:26:18.349 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:18.350 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 8.6818ms
+2024-12-17 14:26:20.146 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:26:20.146 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:20.147 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:20.147 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:26:20.150 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:26:20.150 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:26:20.151 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:26:20.151 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 4.336ms
+2024-12-17 14:26:20.152 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:20.152 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 6.4235ms
+2024-12-17 14:26:38.724 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:26:38.725 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:38.725 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 0.9715ms
+2024-12-17 14:26:38.729 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:26:38.730 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:38.730 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:38.730 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:26:38.733 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:26:38.734 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:26:38.734 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:26:38.735 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 4.3575ms
+2024-12-17 14:26:38.735 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:38.735 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 5.8036ms
+2024-12-17 14:26:48.215 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:26:48.216 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:48.216 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 0.9243ms
+2024-12-17 14:26:48.221 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 69
+2024-12-17 14:26:48.222 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:48.222 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:48.223 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:26:48.237 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:26:48.237 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:26:48.237 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:26:48.238 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 14.9006ms
+2024-12-17 14:26:48.238 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:48.238 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 16.3357ms
+2024-12-17 14:26:50.113 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 69
+2024-12-17 14:26:50.114 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:26:50.114 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:50.114 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:26:50.116 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:26:50.116 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:26:50.116 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:26:50.116 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 1.9557ms
+2024-12-17 14:26:50.116 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:26:50.116 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 3.1084ms
+2024-12-17 14:27:06.486 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:27:06.487 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:27:06.487 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 0.9195ms
+2024-12-17 14:27:06.491 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 69
+2024-12-17 14:27:06.491 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:27:06.491 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:27:06.491 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:27:06.493 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:27:06.494 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:27:06.494 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:27:06.494 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 2.6047ms
+2024-12-17 14:27:06.494 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:27:06.494 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 3.7913ms
+2024-12-17 14:27:49.340 +00:00 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-12-17 14:27:49.490 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2024-12-17 14:27:49.496 +00:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2024-12-17 14:27:49.500 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2024-12-17 14:27:49.500 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-12-17 14:27:49.504 +00:00 [INF] No migrations were applied. The database is already up to date.
+2024-12-17 14:27:51.113 +00:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 14:27:51.130 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 14:27:51.130 +00:00 [INF] Hosting environment: Development
+2024-12-17 14:27:51.130 +00:00 [INF] Content root path: /app
+2024-12-17 14:28:07.958 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:28:07.973 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:28:07.976 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 18.9375ms
+2024-12-17 14:28:07.982 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 63
+2024-12-17 14:28:07.985 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:28:07.990 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 14:28:07.992 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:08.004 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:28:08.084 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:28:08.084 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:28:08.087 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:28:08.094 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 87.8714ms
+2024-12-17 14:28:08.094 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:08.095 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 113.5ms
+2024-12-17 14:28:16.478 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:28:16.483 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:28:16.484 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 5.8846ms
+2024-12-17 14:28:16.490 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:28:16.491 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:28:16.493 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:16.494 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:28:16.508 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:28:16.509 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:28:16.509 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:28:16.509 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 15.6056ms
+2024-12-17 14:28:16.510 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:16.510 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 19.9502ms
+2024-12-17 14:28:18.122 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:28:18.123 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:28:18.125 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:18.125 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:28:18.128 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:28:18.128 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:28:18.128 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:28:18.129 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 3.7209ms
+2024-12-17 14:28:18.129 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:18.129 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 7.2368ms
+2024-12-17 14:28:37.425 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:28:37.426 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:28:37.426 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 0.8828ms
+2024-12-17 14:28:37.430 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 69
+2024-12-17 14:28:37.431 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:28:37.431 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:37.431 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:28:37.432 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:28:37.432 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve ter pelo menos 8 caracteres.
+2024-12-17 14:28:37.432 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:28:37.433 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 1.6122ms
+2024-12-17 14:28:37.433 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:28:37.433 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 2.4833ms
+2024-12-17 14:30:38.803 +00:00 [ERR] An error occurred using the connection to database 'distancia-ceps' on server 'tcp://db:5432'.
+2024-12-17 14:30:40.401 +00:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 14:30:40.419 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 14:30:40.420 +00:00 [INF] Hosting environment: Development
+2024-12-17 14:30:40.420 +00:00 [INF] Content root path: /app
+2024-12-17 14:34:10.635 +00:00 [INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-12-17 14:34:10.779 +00:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" character varying(150) NOT NULL,
+    "ProductVersion" character varying(32) NOT NULL,
+    CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY ("MigrationId")
+);
+2024-12-17 14:34:10.784 +00:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2024-12-17 14:34:10.787 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+LOCK TABLE "__EFMigrationsHistory" IN ACCESS EXCLUSIVE MODE
+2024-12-17 14:34:10.788 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2024-12-17 14:34:10.792 +00:00 [INF] No migrations were applied. The database is already up to date.
+2024-12-17 14:34:12.331 +00:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 14:34:12.347 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 14:34:12.347 +00:00 [INF] Hosting environment: Development
+2024-12-17 14:34:12.347 +00:00 [INF] Content root path: /app
+2024-12-17 14:34:31.902 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:34:31.917 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:34:31.920 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 19.479ms
+2024-12-17 14:34:31.925 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:34:31.929 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:34:31.935 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 14:34:31.936 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:34:31.950 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:34:32.023 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:34:32.027 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve conter pelo menos uma letra maiúscula.
+2024-12-17 14:34:32.029 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:34:32.036 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 83.5662ms
+2024-12-17 14:34:32.036 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:34:32.036 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 111.2664ms
+2024-12-17 14:34:48.164 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:34:48.167 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:34:48.168 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 3.8079ms
+2024-12-17 14:34:48.172 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 69
+2024-12-17 14:34:48.173 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:34:48.175 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:34:48.175 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:34:48.191 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:34:48.191 +00:00 [ERR] Erro inesperado ao registrar usuário: lucas. Erro: A senha deve conter pelo menos um número.
+2024-12-17 14:34:48.192 +00:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:34:48.192 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 16.7257ms
+2024-12-17 14:34:48.192 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:34:48.192 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 500 null application/json; charset=utf-8 20.1442ms
+2024-12-17 14:34:57.154 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - null null
+2024-12-17 14:34:57.155 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:34:57.155 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/register - 204 null null 1.0899ms
+2024-12-17 14:34:57.167 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:34:57.167 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:34:57.168 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:34:57.169 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:34:57.171 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:34:57.864 +00:00 [INF] Usuário registrado com sucesso: lucas
+2024-12-17 14:34:57.865 +00:00 [INF] Executing CreatedResult, writing value of type 'Back.App.DTOs.UserRegisterResponseDto'.
+2024-12-17 14:34:57.869 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 700.0534ms
+2024-12-17 14:34:57.869 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:34:57.870 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 201 null application/json; charset=utf-8 702.6642ms
+2024-12-17 14:35:01.035 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/register - application/json 68
+2024-12-17 14:35:01.036 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:35:01.036 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:35:01.037 +00:00 [INF] Route matched with {action = "Register", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserRegisterResponseDto]] RegisterAsync(Back.App.DTOs.UserRegisterDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:35:01.040 +00:00 [INF] Iniciando o registro do usuário: lucas
+2024-12-17 14:35:01.061 +00:00 [WRN] Falha ao registrar usuário: lucas. Erro: Usuário já cadastrado com este e-mail.
+2024-12-17 14:35:01.061 +00:00 [INF] Executing ConflictObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 14:35:01.061 +00:00 [INF] Executed action Back.App.HTTP.UserController.RegisterAsync (back) in 24.6607ms
+2024-12-17 14:35:01.061 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.RegisterAsync (back)'
+2024-12-17 14:35:01.062 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/register - 409 null application/json; charset=utf-8 26.1539ms
+2024-12-17 14:35:21.269 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - null null
+2024-12-17 14:35:21.269 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:35:21.270 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - 204 null null 0.7326ms
+2024-12-17 14:35:21.273 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 49
+2024-12-17 14:35:21.274 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:35:21.274 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 14:35:21.280 +00:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:35:21.294 +00:00 [INF] Tentando fazer login para o usuário: lucas@lucas.com
+2024-12-17 14:35:21.350 +00:00 [INF] Login bem-sucedido para o usuário: lucas@lucas.com
+2024-12-17 14:35:21.351 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.UserLoginResponseDto'.
+2024-12-17 14:35:21.352 +00:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 71.7041ms
+2024-12-17 14:35:21.352 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 14:35:21.352 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 200 null application/json; charset=utf-8 79.072ms
+2024-12-17 14:35:21.359 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:35:21.359 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:35:21.360 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:35:21.362 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:35:21.365 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:35:21.400 +00:00 [INF] Listagem de distâncias concluída. Total de 0 distâncias encontradas.
+2024-12-17 14:35:21.401 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:35:21.406 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 43.9754ms
+2024-12-17 14:35:21.406 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:35:21.406 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 47.6694ms
+2024-12-17 14:35:40.299 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - null null
+2024-12-17 14:35:40.301 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:35:40.301 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/Distance/Calculate - 204 null null 1.8391ms
+2024-12-17 14:35:40.305 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - application/json 37
+2024-12-17 14:35:40.306 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:35:40.306 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:35:40.314 +00:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:35:40.327 +00:00 [INF] Iniciando cálculo de distância de 89045-400 para 89045-500.
+2024-12-17 14:35:44.225 +00:00 [INF] Cálculo concluído com sucesso. Distância: 7.4147635 km.
+2024-12-17 14:35:44.226 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto'.
+2024-12-17 14:35:44.226 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 3911.5818ms
+2024-12-17 14:35:44.226 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 14:35:44.226 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/Calculate - 200 null application/json; charset=utf-8 3921.3031ms
+2024-12-17 14:35:44.230 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:35:44.230 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:35:44.230 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:35:44.230 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:35:44.231 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:35:44.235 +00:00 [INF] Listagem de distâncias concluída. Total de 1 distâncias encontradas.
+2024-12-17 14:35:44.235 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:35:44.235 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 4.6802ms
+2024-12-17 14:35:44.235 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:35:44.235 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 5.1483ms
+2024-12-17 14:36:01.402 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/User/logout - null null
+2024-12-17 14:36:01.403 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:36:01.403 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.Logout (back)'
+2024-12-17 14:36:01.405 +00:00 [INF] Route matched with {action = "Logout", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Logout() on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:36:01.407 +00:00 [INF] Usuário desconectado com sucesso.
+2024-12-17 14:36:01.413 +00:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2024-12-17 14:36:01.413 +00:00 [INF] Executed action Back.App.HTTP.UserController.Logout (back) in 7.6547ms
+2024-12-17 14:36:01.413 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.Logout (back)'
+2024-12-17 14:36:01.414 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/User/logout - 204 null null 11.1813ms
+2024-12-17 14:36:05.413 +00:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - null null
+2024-12-17 14:36:05.413 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:36:05.413 +00:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - 204 null null 0.6742ms
+2024-12-17 14:36:05.419 +00:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 49
+2024-12-17 14:36:05.419 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:36:05.419 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 14:36:05.419 +00:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:36:05.422 +00:00 [INF] Tentando fazer login para o usuário: lucas@lucas.com
+2024-12-17 14:36:05.432 +00:00 [INF] Login bem-sucedido para o usuário: lucas@lucas.com
+2024-12-17 14:36:05.432 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.UserLoginResponseDto'.
+2024-12-17 14:36:05.432 +00:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 12.4341ms
+2024-12-17 14:36:05.432 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 14:36:05.432 +00:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 200 null application/json; charset=utf-8 13.6202ms
+2024-12-17 14:36:05.440 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:36:05.441 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:36:05.441 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:36:05.441 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:36:05.444 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:36:05.449 +00:00 [INF] Listagem de distâncias concluída. Total de 1 distâncias encontradas.
+2024-12-17 14:36:05.449 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:36:05.450 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 8.0028ms
+2024-12-17 14:36:05.450 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:36:05.450 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 9.4423ms
+2024-12-17 14:36:09.068 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/User/ - null null
+2024-12-17 14:36:09.068 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:36:09.068 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/Distance/list - null null
+2024-12-17 14:36:09.068 +00:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.VerifyLogin (back)'
+2024-12-17 14:36:09.068 +00:00 [INF] CORS policy execution successful.
+2024-12-17 14:36:09.068 +00:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:36:09.068 +00:00 [INF] Route matched with {action = "List", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ListAsync(System.String, System.String) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 14:36:09.069 +00:00 [INF] Iniciando listagem das distâncias.
+2024-12-17 14:36:09.071 +00:00 [INF] Route matched with {action = "VerifyLogin", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] VerifyLogin() on controller Back.App.HTTP.UserController (back).
+2024-12-17 14:36:09.072 +00:00 [INF] Listagem de distâncias concluída. Total de 1 distâncias encontradas.
+2024-12-17 14:36:09.072 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto[]'.
+2024-12-17 14:36:09.072 +00:00 [INF] Executed action Back.App.HTTP.DistanceController.ListAsync (back) in 4.0404ms
+2024-12-17 14:36:09.073 +00:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.ListAsync (back)'
+2024-12-17 14:36:09.073 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/Distance/list - 200 null application/json; charset=utf-8 4.5567ms
+2024-12-17 14:36:09.074 +00:00 [INF] Verificando se usuário está autenticado
+2024-12-17 14:36:09.077 +00:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.UserLoginResponseDto'.
+2024-12-17 14:36:09.077 +00:00 [INF] Executed action Back.App.HTTP.UserController.VerifyLogin (back) in 5.8687ms
+2024-12-17 14:36:09.077 +00:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.VerifyLogin (back)'
+2024-12-17 14:36:09.077 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/User/ - 200 null application/json; charset=utf-8 9.4848ms
+2024-12-17 15:24:54.334 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:24:54.369 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:24:54.370 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:24:54.370 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:25:04.641 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/api/User/logout - null null
+2024-12-17 15:25:04.658 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:25:04.668 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:25:04.669 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.Logout (back)'
+2024-12-17 15:25:04.677 -03:00 [INF] Route matched with {action = "Logout", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Logout() on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:25:04.734 -03:00 [INF] Executed action Back.App.HTTP.UserController.Logout (back) in 54.645ms
+2024-12-17 15:25:04.740 -03:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.Logout (back)'
+2024-12-17 15:25:04.755 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType, EndPointCollection endpoints) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 716
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(ConfigurationOptions configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 678
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 656
+   at Back.Infra.Cash.Cash.Connect(Settings settings) in /home/lucas/code/work/DistanciaCeps/back/Infra/Cash/Redis.cs:line 17
+   at Back.App.Container..ctor() in /home/lucas/code/work/DistanciaCeps/back/App/Container.cs:line 19
+   at Back.App.HTTP.UserController..ctor(ILogger`1 logger) in /home/lucas/code/work/DistanciaCeps/back/App/HTTP/User.cs:line 11
+   at lambda_method4(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-12-17 15:25:04.759 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/api/User/logout - 500 null text/plain; charset=utf-8 119.4588ms
+2024-12-17 15:25:22.668 -03:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - null null
+2024-12-17 15:25:22.672 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:25:22.673 -03:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:7000/api/User/login - 204 null null 6.6466ms
+2024-12-17 15:25:22.677 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 49
+2024-12-17 15:25:22.679 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:25:22.679 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:25:22.700 -03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:25:27.707 -03:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 5007.597ms
+2024-12-17 15:25:27.708 -03:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:25:27.710 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType, EndPointCollection endpoints) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 716
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(ConfigurationOptions configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 678
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 656
+   at Back.Infra.Cash.Cash.Connect(Settings settings) in /home/lucas/code/work/DistanciaCeps/back/Infra/Cash/Redis.cs:line 17
+   at Back.App.Container..ctor() in /home/lucas/code/work/DistanciaCeps/back/App/Container.cs:line 19
+   at Back.App.HTTP.UserController..ctor(ILogger`1 logger) in /home/lucas/code/work/DistanciaCeps/back/App/HTTP/User.cs:line 11
+   at lambda_method12(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-12-17 15:25:27.713 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 500 null text/plain; charset=utf-8 5036.8309ms
+2024-12-17 15:25:45.998 -03:00 [INF] Application is shutting down...
+2024-12-17 15:25:48.778 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:25:48.816 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:25:48.817 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:25:48.817 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:25:50.196 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/swagger/index.html - null null
+2024-12-17 15:25:50.261 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/swagger/index.html - 200 null text/html;charset=utf-8 66.4164ms
+2024-12-17 15:25:50.483 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/swagger/v1/swagger.json - null null
+2024-12-17 15:25:50.555 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 72.1461ms
+2024-12-17 15:26:15.377 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 58
+2024-12-17 15:26:15.389 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:26:15.392 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:26:15.394 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:26:15.422 -03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:26:15.483 -03:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 58.062ms
+2024-12-17 15:26:15.484 -03:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:26:15.495 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType, EndPointCollection endpoints) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 716
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(ConfigurationOptions configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 678
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 656
+   at Back.Infra.Cash.Cash.Connect(Settings settings) in /home/lucas/code/work/DistanciaCeps/back/Infra/Cash/Redis.cs:line 17
+   at Back.App.Container..ctor() in /home/lucas/code/work/DistanciaCeps/back/App/Container.cs:line 19
+   at Back.App.HTTP.UserController..ctor(ILogger`1 logger) in /home/lucas/code/work/DistanciaCeps/back/App/HTTP/User.cs:line 11
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-12-17 15:26:15.498 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 500 null text/plain; charset=utf-8 120.4841ms
+2024-12-17 15:26:51.338 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 58
+2024-12-17 15:26:51.340 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:26:51.340 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:26:51.340 -03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:26:51.343 -03:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 2.4052ms
+2024-12-17 15:26:51.343 -03:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:26:51.344 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType, EndPointCollection endpoints) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 716
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(ConfigurationOptions configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 678
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 656
+   at Back.Infra.Cash.Cash.Connect(Settings settings) in /home/lucas/code/work/DistanciaCeps/back/Infra/Cash/Redis.cs:line 17
+   at Back.App.Container..ctor() in /home/lucas/code/work/DistanciaCeps/back/App/Container.cs:line 19
+   at Back.App.HTTP.UserController..ctor(ILogger`1 logger) in /home/lucas/code/work/DistanciaCeps/back/App/HTTP/User.cs:line 11
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-12-17 15:26:51.345 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 500 null text/plain; charset=utf-8 7.1602ms
+2024-12-17 15:26:53.260 -03:00 [INF] Application is shutting down...
+2024-12-17 15:28:06.521 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:28:06.572 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:28:06.575 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:28:06.577 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:28:06.697 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/ - null null
+2024-12-17 15:28:06.754 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:28:06.773 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/ - 404 0 null 78.5373ms
+2024-12-17 15:28:06.786 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:7000/, Response status code: 404
+2024-12-17 15:28:12.289 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 58
+2024-12-17 15:28:12.335 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:28:12.337 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:28:12.356 -03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:28:21.399 -03:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 9037.9186ms
+2024-12-17 15:28:21.402 -03:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:28:21.408 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). Error connecting right now. To allow this multiplexer to continue retrying until it's able to connect, use abortConnect=false in your connection string or AbortOnConnectFail=false; in your code.
+   at StackExchange.Redis.ConnectionMultiplexer.ConnectImpl(ConfigurationOptions configuration, TextWriter writer, Nullable`1 serverType, EndPointCollection endpoints) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 716
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(ConfigurationOptions configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 678
+   at StackExchange.Redis.ConnectionMultiplexer.Connect(String configuration, TextWriter log) in /_/src/StackExchange.Redis/ConnectionMultiplexer.cs:line 656
+   at Back.Infra.Cash.Cash.Connect(Settings settings) in /home/lucas/code/work/DistanciaCeps/back/Infra/Cash/Redis.cs:line 17
+   at Back.App.Container..ctor() in /home/lucas/code/work/DistanciaCeps/back/App/Container.cs:line 19
+   at Back.App.HTTP.UserController..ctor(ILogger`1 logger) in /home/lucas/code/work/DistanciaCeps/back/App/HTTP/User.cs:line 11
+   at lambda_method10(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-12-17 15:28:22.313 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 500 null text/plain; charset=utf-8 10024.4826ms
+2024-12-17 15:29:40.887 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:29:40.931 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:29:40.934 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:29:40.936 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:29:41.051 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/ - null null
+2024-12-17 15:29:41.088 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:29:41.100 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/ - 404 0 null 49.8206ms
+2024-12-17 15:29:41.109 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:7000/, Response status code: 404
+2024-12-17 15:29:48.499 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 58
+2024-12-17 15:29:48.520 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:29:48.521 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:29:48.539 -03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:32:15.061 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:32:15.095 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:32:15.097 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:32:15.100 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:32:15.205 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/ - null null
+2024-12-17 15:32:15.243 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:32:15.255 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/ - 404 0 null 50.5882ms
+2024-12-17 15:32:15.263 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:7000/, Response status code: 404
+2024-12-17 15:32:16.829 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 58
+2024-12-17 15:32:16.850 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:32:16.852 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:32:16.877 -03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:32:17.298 -03:00 [INF] Tentando fazer login para o usuário: lucas@lucas.com
+2024-12-17 15:32:18.481 -03:00 [ERR] Erro inesperado durante o login para o usuário: lucas@lucas.com. Erro: An exception has been raised that is likely due to a transient failure.
+2024-12-17 15:32:18.488 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:32:18.499 -03:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 1619.9057ms
+2024-12-17 15:32:18.500 -03:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:32:18.501 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 500 null application/json; charset=utf-8 1672.5938ms
+2024-12-17 15:32:34.247 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/User/login - application/json 58
+2024-12-17 15:32:34.250 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:32:34.251 -03:00 [INF] Executing endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:32:34.251 -03:00 [INF] Route matched with {action = "Login", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[Back.App.DTOs.UserLoginResponseDto]] LoginAsync(Back.App.DTOs.UserLoginDto) on controller Back.App.HTTP.UserController (back).
+2024-12-17 15:32:34.265 -03:00 [INF] Tentando fazer login para o usuário: lucas@lucas.com
+2024-12-17 15:32:34.573 -03:00 [INF] Login bem-sucedido para o usuário: lucas@lucas.com
+2024-12-17 15:32:34.574 -03:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.UserLoginResponseDto'.
+2024-12-17 15:32:34.576 -03:00 [INF] Executed action Back.App.HTTP.UserController.LoginAsync (back) in 325.2284ms
+2024-12-17 15:32:34.576 -03:00 [INF] Executed endpoint 'Back.App.HTTP.UserController.LoginAsync (back)'
+2024-12-17 15:32:34.576 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/User/login - 200 null application/json; charset=utf-8 329.1791ms
+2024-12-17 15:33:11.908 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:33:11.909 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:33:11.909 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:33:11.916 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:33:11.929 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 12.4369ms
+2024-12-17 15:33:11.929 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:33:11.963 -03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'Back.App.Container' while attempting to activate 'Back.App.HTTP.DistanceController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method52(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2024-12-17 15:33:11.982 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null text/plain; charset=utf-8 73.7269ms
+2024-12-17 15:33:45.846 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:33:45.882 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:33:45.885 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:33:45.887 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:33:46.021 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/ - null null
+2024-12-17 15:33:46.096 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:33:46.110 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/ - 404 0 null 91.823ms
+2024-12-17 15:33:46.129 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:7000/, Response status code: 404
+2024-12-17 15:33:49.748 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:33:49.774 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:33:49.778 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:33:49.797 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:33:50.147 -03:00 [INF] Iniciando cálculo de distância de 89045510 para 89045500.
+2024-12-17 15:35:14.576 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:35:14.620 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:35:14.622 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:35:14.625 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:35:14.773 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/ - null null
+2024-12-17 15:35:14.842 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:35:14.855 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/ - 404 0 null 82.3744ms
+2024-12-17 15:35:14.874 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:7000/, Response status code: 404
+2024-12-17 15:35:21.731 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:35:21.744 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:35:21.745 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:35:21.765 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:35:22.182 -03:00 [INF] Iniciando cálculo de distância de 89045510 para 89045500.
+2024-12-17 15:35:49.149 -03:00 [INF] Cálculo concluído com sucesso. Distância: 4.4998326 km.
+2024-12-17 15:35:49.159 -03:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto'.
+2024-12-17 15:35:49.176 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 27407.161ms
+2024-12-17 15:35:49.177 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:35:49.178 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 200 null application/json; charset=utf-8 27447.9469ms
+2024-12-17 15:35:54.633 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:35:54.636 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:35:54.637 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:35:54.638 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:35:54.655 -03:00 [INF] Iniciando cálculo de distância de 89045510 para 89045500.
+2024-12-17 15:35:56.796 -03:00 [INF] Cálculo concluído com sucesso. Distância: 4.4998326 km.
+2024-12-17 15:35:56.796 -03:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto'.
+2024-12-17 15:35:56.796 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 2158.633ms
+2024-12-17 15:35:56.796 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:35:56.797 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 200 null application/json; charset=utf-8 2163.1322ms
+2024-12-17 15:36:08.791 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:36:08.792 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:36:08.792 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:36:08.792 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:36:08.798 -03:00 [INF] Iniciando cálculo de distância de 89045510 para 89045500.
+2024-12-17 15:38:05.244 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:38:05.291 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:38:05.293 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:38:05.295 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:38:05.383 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:7000/ - null null
+2024-12-17 15:38:05.413 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:38:05.422 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:7000/ - 404 0 null 40.3846ms
+2024-12-17 15:38:05.440 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:7000/, Response status code: 404
+2024-12-17 15:38:45.094 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:38:45.122 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:38:45.123 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:38:45.123 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:38:50.292 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:38:50.310 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:38:50.318 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:38:50.320 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:38:50.341 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:38:50.532 -03:00 [INF] Iniciando cálculo de distância de 89045200 para 89045300.
+2024-12-17 15:38:54.332 -03:00 [INF] Cálculo concluído com sucesso. Distância: 4.712495 km.
+2024-12-17 15:38:54.339 -03:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto'.
+2024-12-17 15:38:54.354 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 4010.0016ms
+2024-12-17 15:38:54.354 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:38:54.356 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 200 null application/json; charset=utf-8 4065.023ms
+2024-12-17 15:39:02.141 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:39:02.142 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:39:02.143 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:39:02.143 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:39:02.151 -03:00 [INF] Iniciando cálculo de distância de 89045200 para 89045300.
+2024-12-17 15:39:02.200 -03:00 [INF] Cálculo concluído com sucesso. Distância: 4.712495 km.
+2024-12-17 15:39:02.201 -03:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto'.
+2024-12-17 15:39:02.202 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 58.584ms
+2024-12-17 15:39:02.202 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:39:02.202 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 200 null application/json; charset=utf-8 61.5879ms
+2024-12-17 15:39:52.290 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:39:52.292 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:39:52.293 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:39:52.293 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:39:52.306 -03:00 [INF] Iniciando cálculo de distância de 79050651 para 64001903.
+2024-12-17 15:39:54.556 -03:00 [ERR] Erro inesperado: Response status code does not indicate success: 403 (Forbidden).
+2024-12-17 15:39:54.557 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:39:54.559 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 2266.2925ms
+2024-12-17 15:39:54.559 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:39:54.560 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null application/json; charset=utf-8 2269.4214ms
+2024-12-17 15:40:14.291 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:40:14.292 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:40:14.292 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:40:14.292 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:40:14.295 -03:00 [INF] Iniciando cálculo de distância de 24735555 para 31260600.
+2024-12-17 15:40:16.249 -03:00 [ERR] Erro inesperado: Response status code does not indicate success: 403 (Forbidden).
+2024-12-17 15:40:16.250 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:40:16.251 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 1958.2888ms
+2024-12-17 15:40:16.251 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:40:16.251 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null application/json; charset=utf-8 1959.5139ms
+2024-12-17 15:40:35.575 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:40:35.576 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:40:35.576 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:40:35.576 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:40:35.578 -03:00 [INF] Iniciando cálculo de distância de 11660050 para 86010040.
+2024-12-17 15:40:37.533 -03:00 [ERR] Erro inesperado: Response status code does not indicate success: 403 (Forbidden).
+2024-12-17 15:40:37.533 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:40:37.534 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 1957.874ms
+2024-12-17 15:40:37.534 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:40:37.534 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null application/json; charset=utf-8 1958.8544ms
+2024-12-17 15:40:49.738 -03:00 [INF] Application is shutting down...
+2024-12-17 15:40:52.745 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:40:52.775 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:40:52.775 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:40:52.775 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:41:05.150 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:41:05.177 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:41:05.189 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:41:05.191 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:41:05.208 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:41:05.379 -03:00 [INF] Iniciando cálculo de distância de 70775520 para 56912420.
+2024-12-17 15:41:08.045 -03:00 [ERR] Erro inesperado: Response status code does not indicate success: 403 (Forbidden).
+2024-12-17 15:41:08.059 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:41:08.070 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 2857.6021ms
+2024-12-17 15:41:08.072 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:41:08.074 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null application/json; charset=utf-8 2925.0361ms
+2024-12-17 15:41:18.980 -03:00 [INF] Application is shutting down...
+2024-12-17 15:41:21.790 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:41:21.818 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:41:21.818 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:41:21.818 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:41:32.531 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:41:32.550 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:41:32.558 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:41:32.559 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:41:32.576 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:41:32.749 -03:00 [INF] Iniciando cálculo de distância de 19910723 para 13238742.
+2024-12-17 15:41:35.613 -03:00 [ERR] Erro inesperado: Response status code does not indicate success: 403 (Forbidden).
+2024-12-17 15:41:35.637 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:41:35.648 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 3068.2528ms
+2024-12-17 15:41:35.650 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:41:35.652 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null application/json; charset=utf-8 3122.172ms
+2024-12-17 15:41:47.456 -03:00 [INF] Application is shutting down...
+2024-12-17 15:41:50.966 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:41:50.994 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:41:50.994 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:41:50.994 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:42:01.349 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:42:01.368 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:42:01.375 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:42:01.377 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:42:01.394 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:42:01.588 -03:00 [INF] Iniciando cálculo de distância de 05821110 para 54490265.
+2024-12-17 15:42:04.636 -03:00 [ERR] Erro inesperado: Response status code does not indicate success: 403 (Forbidden).
+2024-12-17 15:42:04.658 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:42:04.667 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 3270.0643ms
+2024-12-17 15:42:04.669 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:42:04.671 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null application/json; charset=utf-8 3323.3283ms
+2024-12-17 15:42:12.968 -03:00 [INF] Application is shutting down...
+2024-12-17 15:42:16.056 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:42:16.085 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:42:16.085 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:42:16.085 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:42:26.062 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:42:26.081 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:42:26.089 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:42:26.091 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:42:26.107 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:42:26.285 -03:00 [INF] Iniciando cálculo de distância de 13214721 para 35181717.
+2024-12-17 15:42:29.520 -03:00 [ERR] Erro inesperado: Response status code does not indicate success: 403 (Forbidden).
+2024-12-17 15:42:29.547 -03:00 [INF] Executing ObjectResult, writing value of type 'Back.App.DTOs.ExceptionResponseDto'.
+2024-12-17 15:42:29.557 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 3446.3021ms
+2024-12-17 15:42:29.559 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:42:29.561 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 500 null application/json; charset=utf-8 3500.0376ms
+2024-12-17 15:46:49.277 -03:00 [INF] Application is shutting down...
+2024-12-17 15:46:52.020 -03:00 [INF] Now listening on: http://[::]:7000
+2024-12-17 15:46:52.049 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-12-17 15:46:52.050 -03:00 [INF] Hosting environment: Development
+2024-12-17 15:46:52.050 -03:00 [INF] Content root path: /home/lucas/code/work/DistanciaCeps/back
+2024-12-17 15:46:56.250 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:46:56.276 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:46:56.287 -03:00 [WRN] Failed to determine the https port for redirect.
+2024-12-17 15:46:56.289 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:46:56.311 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:46:56.496 -03:00 [INF] Iniciando cálculo de distância de 13214721 para 35181717.
+2024-12-17 15:46:59.776 -03:00 [INF] Cálculo concluído com sucesso. Distância: 599.4296 km.
+2024-12-17 15:46:59.784 -03:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto'.
+2024-12-17 15:46:59.801 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 3486.7431ms
+2024-12-17 15:46:59.802 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:46:59.804 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 200 null application/json; charset=utf-8 3555.9112ms
+2024-12-17 15:47:02.130 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - application/json 44
+2024-12-17 15:47:02.132 -03:00 [INF] CORS policy execution successful.
+2024-12-17 15:47:02.132 -03:00 [INF] Executing endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:47:02.133 -03:00 [INF] Route matched with {action = "Calculate", controller = "Distance"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CalculateAsync(Back.App.DTOs.DistanceDto) on controller Back.App.HTTP.DistanceController (back).
+2024-12-17 15:47:02.139 -03:00 [INF] Iniciando cálculo de distância de 13214721 para 35181717.
+2024-12-17 15:47:02.187 -03:00 [INF] Cálculo concluído com sucesso. Distância: 599.4296 km.
+2024-12-17 15:47:02.187 -03:00 [INF] Executing OkObjectResult, writing value of type 'Back.App.DTOs.DistanceResponseDto'.
+2024-12-17 15:47:02.188 -03:00 [INF] Executed action Back.App.HTTP.DistanceController.CalculateAsync (back) in 54.9096ms
+2024-12-17 15:47:02.188 -03:00 [INF] Executed endpoint 'Back.App.HTTP.DistanceController.CalculateAsync (back)'
+2024-12-17 15:47:02.188 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:7000/api/Distance/calculate - 200 null application/json; charset=utf-8 57.8331ms
