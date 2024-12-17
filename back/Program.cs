@@ -1,4 +1,5 @@
 ﻿using Back.Infra.Builder;
+using Back.Infra.Queue;
 namespace Back;
 
 public class Settings
@@ -11,23 +12,30 @@ public class Settings
     public string SecretKey { get; set; }
     public string CepAbertoToken { get; set; }
     public string Host { get; set; }
+    public string RMqHostName { get; set; }
+    public string RMqUserName { get; set; }
+    public string RMqPassword { get; set; }
 
     public Settings()
     {
         DotNetEnv.Env.Load(".env");
-        DbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "default_db";
-        DbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "user";
-        DbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "password";
+        DbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "distancia-ceps";
+        DbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "admin";
+        DbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "admin";
         DbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
         DbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
-        SecretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? "secret_key";
+        SecretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? "MinhaSuperSecretaChaveComMaisDe32Caracteres123456";
         CepAbertoToken = Environment.GetEnvironmentVariable("CEP_ABERTO_TOKEN") ?? "cep_aberto_token";
         Host = Environment.GetEnvironmentVariable("HOST") ?? "localhost";
+        RMqHostName = Environment.GetEnvironmentVariable("RABBITMQ_USER") ?? "admin";
+        RMqUserName = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "admin";
+        RMqPassword = Environment.GetEnvironmentVariable("RABBITMQ_VHOST") ?? "localhost";
     }
 }
 public class Program
 {
     public static Settings Settings = new Settings();
+
     public static void Main(string[] args)
     {
 
@@ -40,6 +48,18 @@ public class Program
         app.UseSwaggerUI();
         app.UseHttpsRedirection();
         app.MapControllers();
-        app.Run();
+
+        Thread apiThread = new Thread(app.Run);
+        apiThread.Start();
+
+        Thread rabbitMqThread = new Thread(QueueConsumer);
+        rabbitMqThread.Start();
+
+        Console.ReadLine();
     }
+    public static void QueueConsumer()
+    {
+        // Queue.ConsumerLoop(Settings);
+    }
+
 }

@@ -14,6 +14,7 @@ services:
       - db
       - front
       - redis
+      - rabbitmq
     networks:
       - distancia-ceps-network
   db:
@@ -58,6 +59,19 @@ services:
     command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
     ports:
       - "6379:6379"
+    networks:
+      - distancia-ceps-network
+  
+  rabbitmq:
+    image: "rabbitmq:management"
+    container_name: distancia-ceps-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
+    ports:
+      - "15672:15672"
+      - "5672:5672"
     networks:
       - distancia-ceps-network
     
