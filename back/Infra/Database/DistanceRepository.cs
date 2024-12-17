@@ -59,7 +59,9 @@ public class DistanceRepository
 
     public async Task<Distance[]> ListByUserAsync(User user)
     {
-        var distances = await _dbContext.Distances.Where(d => d.UserId == user.Id).ToListAsync();
+        var distances = await _dbContext.Distances
+        .Where(d => d.UserId == user.Id)
+        .ToListAsync();
         return distances.ToArray();
     }
 }

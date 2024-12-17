@@ -17,9 +17,9 @@ public class UserLoginDto
 
 public class UserRegisterResponseDto
 {
-    public string Username;
-    public string Email;
-    public int Id;
+    public string Username { get; set; }
+    public string Email { get; set; }
+    public int Id { get; set; }
 
     public UserRegisterResponseDto(string username, string email, int id)
     {
@@ -40,7 +40,7 @@ public class UserRegisterResponseDto
 
 public class UserLoginResponseDto
 {
-    public string Token;
+    public string Token { get; set; }
 
     public UserLoginResponseDto(string token)
     {

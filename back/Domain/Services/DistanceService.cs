@@ -22,6 +22,7 @@ public class DistanceService
     public async Task<Distance> GetCalculateAndSaveAsync(string de, string para, User user)
     {
         var (DeLat, DeLong) = await GetCoordByCep(de);
+        await Task.Delay(2000);
         var (ParaLat, ParaLong) = await GetCoordByCep(para);
         float distance = Calculate(DeLat, DeLong, ParaLat, ParaLong);
 

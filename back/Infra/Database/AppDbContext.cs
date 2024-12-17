@@ -17,7 +17,8 @@ public class AppDbContext : DbContext
         string DbUser,
         string DbPassword,
         string DbPort = "5432"
-    ){
+    )
+    {
         string connectionString =
             $"Host={DbHost};" +
             $"Database={DbName};" +
@@ -25,7 +26,7 @@ public class AppDbContext : DbContext
             $"Password={DbPassword}";
 
         var options = new DbContextOptionsBuilder<AppDbContext>()
-            .UseNpgsql("")
+            .UseNpgsql(connectionString)
             .Options;
 
         return options;
