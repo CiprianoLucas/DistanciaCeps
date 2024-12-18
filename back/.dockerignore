@@ -1,0 +1,6 @@
+bin/
+obj/
+Logs/
+.vscode/
+node_modules
+dist
