@@ -4,4 +4,5 @@ Logs/
 .vscode/
 node_modules
 dist
+.env
 *.sln

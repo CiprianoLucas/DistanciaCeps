@@ -13,7 +13,7 @@ const cepModal1 = ref('');
 const cepModal2 = ref('');
 const cepTable1 = ref('');
 const cepTable2 = ref('');
-const username = ref<string>('');
+const username = ref('');
 const usernameRegister = ref('');
 const emailRegister = ref('');
 const passwordRegister = ref('');
@@ -259,10 +259,10 @@ onMounted(() => {
                         data-toggle="modal" data-target="#calculoModal" data-whatever="@mdo" :disabled="importando">
                         <div class="p-2">
                             <i class="bi bi-plus-circle"></i>
-                            <span class="ml-2">Calcular</span>
+                            <span class="ml-2">Novo cálculo</span>
                         </div>
                     </button>
-                    <input type="file" class="custom-file-input d-none" id="inputGroupFile04" accept=".csv, text/csv"
+                    <!-- <input type="file" class="custom-file-input d-none" id="inputGroupFile04" accept=".csv, text/csv"
                         aria-describedby="inputGroupFileAddon04" @change="importarCeps" :disabled="importando">
                     <label class="col text-dark d-flex justify-content-center border m-0"
                         :class="{ 'loading-button': importando }" for="inputGroupFile04">
@@ -270,7 +270,7 @@ onMounted(() => {
                             <i class="bi bi-file-earmark-arrow-up"></i>
                             <span class="ml-2">{{ msImportando }}</span>
                         </div>
-                    </label>
+                    </label> -->
                     <button v-if="!username" type="button"
                         class="col text-dark bg-light d-flex justify-content-center border" data-toggle="modal"
                         data-target="#loginModal">
@@ -311,13 +311,16 @@ onMounted(() => {
             </div>
         </nav>
         <main class="p-5">
+            <div class="d-flex justify-content-center">
+                <p class="text-center h2 mb-4">Lista de Ceps já calculados por você</p>
+            </div>
             <form @submit.prevent="fetchRegistros">
                 <div class="table">
                     <div class="input-group mb-3">
                         <cep-input v-model="cepTable1"></cep-input>
                         <cep-input v-model="cepTable2"></cep-input>
                         <button class="btn btn-outline-secondary" type="submit" id="button-addon"><i
-                                class="bi bi-search"></i></button>
+                                class="bi bi-funnel"></i></button>
                     </div>
                 </div>
             </form>
@@ -408,6 +411,8 @@ onMounted(() => {
                                 <input type="password" id="password-register" class="form-control"
                                     v-model="passwordRegister" />
                             </div>
+                            <p style="font-size: 0.8em;">A senha deve ter no mínimo 8 caracteres, letras maiúsculas,
+                                minúsculas e números</p>
                             <div class="form-group">
                                 <label for="c-password-register">Repita a senha:</label>
                                 <input type="password" id="c-password-register" class="form-control"

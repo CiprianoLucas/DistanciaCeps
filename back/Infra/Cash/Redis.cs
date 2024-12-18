@@ -14,7 +14,7 @@ public class Cash
 
     public static Cash Connect(Settings settings)
     {
-        var connection = ConnectionMultiplexer.Connect(settings.Host);
+        var connection = ConnectionMultiplexer.Connect(settings.RedisHost);
         var db = connection.GetDatabase();
         return new Cash(connection, db);
     }

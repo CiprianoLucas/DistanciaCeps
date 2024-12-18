@@ -11,7 +11,7 @@ public class Settings
     public string DbHost { get; set; }
     public string SecretKey { get; set; }
     public string CepAbertoToken { get; set; }
-    public string Host { get; set; }
+    public string RedisHost { get; set; }
     public string RMqHostName { get; set; }
     public string RMqUserName { get; set; }
     public string RMqPassword { get; set; }
@@ -26,7 +26,7 @@ public class Settings
         DbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
         SecretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? "MinhaSuperSecretaChaveComMaisDe32Caracteres123456";
         CepAbertoToken = Environment.GetEnvironmentVariable("CEP_ABERTO_TOKEN") ?? "cep_aberto_token";
-        Host = Environment.GetEnvironmentVariable("HOST") ?? "localhost";
+        RedisHost = Environment.GetEnvironmentVariable("REDIS_HOST") ?? "localhost";
         RMqHostName = Environment.GetEnvironmentVariable("RABBITMQ_USER") ?? "admin";
         RMqUserName = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "admin";
         RMqPassword = Environment.GetEnvironmentVariable("RABBITMQ_VHOST") ?? "localhost";
