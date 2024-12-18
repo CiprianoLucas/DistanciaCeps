@@ -1,43 +1,65 @@
-﻿using Back.Infra.Database;
-using Serilog;
+﻿using Back.Infra.Builder;
+using Back.Infra.Queue;
+namespace Back;
 
-var builder = WebApplication.CreateBuilder(args);
-
-DotNetEnv.Env.Load(".env");
-
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
-                     .AddEnvironmentVariables();
-
-var configuration = builder.Configuration;
-var settingsSection = configuration.GetSection("Settings");
-
-var connectionString = "Host=${DB_HOST};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD}"
-    .Replace("${DB_HOST}", Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost")
-    .Replace("${DB_NAME}", Environment.GetEnvironmentVariable("DB_NAME") ?? "default_db")
-    .Replace("${DB_USER}", Environment.GetEnvironmentVariable("DB_USER") ?? "user")
-    .Replace("${DB_PASSWORD}", Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "password");
-
-builder.Services.AddDatabaseConfiguration(connectionString);
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Month)
-    .CreateLogger();
-
-builder.Logging.ClearProviders();
-builder.Logging.AddSerilog();
-
-var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+public class Settings
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public string DbName { get; set; }
+    public string DbUser { get; set; }
+    public string DbPassword { get; set; }
+    public string DbPort { get; set; }
+    public string DbHost { get; set; }
+    public string SecretKey { get; set; }
+    public string CepAbertoToken { get; set; }
+    public string RedisHost { get; set; }
+    public string RMqHostName { get; set; }
+    public string RMqUserName { get; set; }
+    public string RMqPassword { get; set; }
+
+    public Settings()
+    {
+        DotNetEnv.Env.Load(".env");
+        DbName = Environment.GetEnvironmentVariable("DB_NAME") ?? "distancia-ceps";
+        DbUser = Environment.GetEnvironmentVariable("DB_USER") ?? "admin";
+        DbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD") ?? "admin";
+        DbHost = Environment.GetEnvironmentVariable("DB_HOST") ?? "localhost";
+        DbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
+        SecretKey = Environment.GetEnvironmentVariable("SECRET_KEY") ?? "MinhaSuperSecretaChaveComMaisDe32Caracteres123456";
+        CepAbertoToken = Environment.GetEnvironmentVariable("CEP_ABERTO_TOKEN") ?? "cep_aberto_token";
+        RedisHost = Environment.GetEnvironmentVariable("REDIS_HOST") ?? "localhost";
+        RMqHostName = Environment.GetEnvironmentVariable("RABBITMQ_USER") ?? "admin";
+        RMqUserName = Environment.GetEnvironmentVariable("RABBITMQ_PASSWORD") ?? "admin";
+        RMqPassword = Environment.GetEnvironmentVariable("RABBITMQ_VHOST") ?? "localhost";
+    }
 }
-app.UseHttpsRedirection();
-app.MapControllers();
-app.Run();
+public class Program
+{
+    public static Settings Settings = new Settings();
+
+    public static void Main(string[] args)
+    {
+
+        var Build = new Build();
+        var builder = Build.CreateBuilder(args);
+        var app = builder.Build();
+        app.UseCors("AllowAll");
+        app.Urls.Add("http://*:7000");
+        app.UseSwagger();
+        app.UseSwaggerUI();
+        app.UseHttpsRedirection();
+        app.MapControllers();
+
+        Thread apiThread = new Thread(app.Run);
+        apiThread.Start();
+
+        Thread rabbitMqThread = new Thread(QueueConsumer);
+        rabbitMqThread.Start();
+
+        Console.ReadLine();
+    }
+    public static void QueueConsumer()
+    {
+        // Queue.ConsumerLoop(Settings);
+    }
+
+}

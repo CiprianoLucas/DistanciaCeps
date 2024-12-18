@@ -1,7 +1,8 @@
 <template>
-    <input type="text" class="form-control" :class="{ 'border-danger': erro }" v-model="cep" @input="onInput"
-        @blur="validarCep" placeholder="00000-000" aria-label="CEP">
+    <input type="text" class="form-control" :class="{ 'border-danger': erro }" v-model="cep" @blur="validarCep"
+        placeholder="00000-000" aria-label="CEP">
 </template>
+
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 
@@ -10,7 +11,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-    (event: 'input', value: string): void;
+    (event: 'update:modelValue', value: string): void;
 }>();
 
 const cep = ref(props.modelValue);
@@ -33,23 +34,11 @@ function validarCep() {
     }
 }
 
-function onInput(event: Event) {
-    const target = event.target as HTMLInputElement;
-    cep.value = target.value;
+watch(cep, (newValue) => {
     formatarCep();
     validarCep();
-    emit('input', cep.value);
-}
-
-watch(
-    () => props.modelValue,
-    (newValue) => {
-        cep.value = newValue;
-        formatarCep();
-        validarCep();
-    },
-    { immediate: true }
-);
+    emit('update:modelValue', newValue);
+}, { immediate: true });
 </script>
 
 <style scoped>

@@ -1,4 +1,22 @@
 services:
+  back:
+    platform: linux/amd64
+    container_name: distancia-ceps-back
+    build:
+      context: ./../
+      dockerfile: ./back/Dockerfile
+    volumes:
+      - ./../back/Logs:/app/Logs/
+    env_file: ./.env
+    ports:
+      - "7000:7000"
+    depends_on:
+      - db
+      - front
+      - redis
+      - rabbitmq
+    networks:
+      - distancia-ceps-network
   db:
     image: postgres:15
     container_name: distancia-ceps-db
@@ -11,7 +29,49 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       TZ: America/Sao_Paulo
     ports:
-      - "${DB_PORT}:5432"
+      - "5432:5432"
+    networks:
+      - distancia-ceps-network
+    expose:
+      - 5432
+  front:
+    platform: linux/amd64
+    container_name: distancia-ceps-front
+    build: 
+      context: ./../front
+      dockerfile: Dockerfile
+    volumes:
+      - ./../front/src:/app/src
+      - ./../front/public:/app/public
+    mem_limit: 512m
+    memswap_limit: 1g
+    env_file: ./.env
+    depends_on:
+      - db
+    ports:
+      - "7001:7001"
+    networks:
+      - distancia-ceps-network
+
+  redis:
+    image: redis:7
+    container_name: distancia-ceps-redis
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    ports:
+      - "6379:6379"
+    networks:
+      - distancia-ceps-network
+  
+  rabbitmq:
+    image: "rabbitmq:management"
+    container_name: distancia-ceps-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
+    ports:
+      - "15672:15672"
+      - "5672:5672"
     networks:
       - distancia-ceps-network
     

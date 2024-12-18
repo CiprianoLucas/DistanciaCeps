@@ -29,7 +29,7 @@ public class DistanceController : ControllerBase
             _logger.LogInformation("Iniciando cálculo de distância de {De} para {Para}.", dto.De, dto.Para);
 
             User user = await _container.TokenService.VerifyToken(Request.Cookies["X-Access-Token"]);
-            Distance distance = await _container.DistanceService.GetCalculateAndSaveAsync(dto.De, dto.Para, user);
+            var (distance, _) = await _container.DistanceService.GetCalculateAndSaveAsync(dto.De, dto.Para, user);
             _logger.LogInformation("Cálculo concluído com sucesso. Distância: {Distancia} km.", distance.Distancia);
 
             return Ok(DistanceResponseDto.Create(distance.De, distance.Para, distance.Distancia));
@@ -61,14 +61,14 @@ public class DistanceController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ExceptionResponseDto))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(ExceptionResponseDto))]
     [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ExceptionResponseDto))]
-    public async Task<IActionResult> ListAsync()
+    public async Task<IActionResult> ListAsync([FromQuery] string? de, [FromQuery] string? para)
     {
         try
         {
             _logger.LogInformation("Iniciando listagem das distâncias.");
 
             User user = await _container.TokenService.VerifyToken(Request.Cookies["X-Access-Token"]);
-            Distance[] distances = await _container.DistanceService.GetDistancesByUserAsync(user);
+            Distance[] distances = await _container.DistanceService.GetDistancesByUserAsync(user, de, para);
             _logger.LogInformation("Listagem de distâncias concluída. Total de {Count} distâncias encontradas.", distances.Length);
 
             DistanceResponseDto[] response = distances.Select(d => new DistanceResponseDto(

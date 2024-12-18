@@ -57,11 +57,18 @@ public class DistanceRepository
         return await UpdateAsync(distance);
     }
 
-    public async Task<Distance[]> ListByUserAsync(User user)
+    public async Task<Distance[]> ListByUserAsync(User user, string? de, string? para)
     {
-        var distances = await _dbContext.Distances
-        .Where(d => d.UserId == user.Id)
-        .ToListAsync();
+        var query = _dbContext.Distances.Where(d => d.UserId == user.Id);
+        if (!string.IsNullOrEmpty(de))
+        {
+            query = query.Where(d => d.De == de);
+        }
+        if (!string.IsNullOrEmpty(para))
+        {
+            query = query.Where(d => d.Para == para);
+        }
+        var distances = await query.ToListAsync();
         return distances.ToArray();
     }
 }

@@ -40,15 +40,15 @@ public class UserRegisterResponseDto
 
 public class UserLoginResponseDto
 {
-    public string Token { get; set; }
+    public string Username { get; set; }
 
-    public UserLoginResponseDto(string token)
+    public UserLoginResponseDto(string username)
     {
-        Token = token;
+        Username = username;
     }
 
-    public static UserLoginResponseDto Create(string token)
+    public static UserLoginResponseDto Create(string username)
     {
-        return new UserLoginResponseDto(token);
+        return new UserLoginResponseDto(username);
     }
 }
